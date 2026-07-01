@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
+import Experience from "../../components/Experience";
 import {
   dataabout,
   meta,
@@ -53,6 +54,11 @@ export const About = () => {
                 })}
               </tbody>
             </table>
+          </Col>
+        </Row>
+        <Row className="sec_sp">
+          <Col lg="12">
+            <Experience />
           </Col>
         </Row>
         <Row className="sec_sp">
