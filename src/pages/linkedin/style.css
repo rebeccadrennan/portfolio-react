@@ -1,0 +1,246 @@
+.linkedin-icon {
+  margin-right: 10px;
+  color: #0a66c2;
+}
+
+.linkedin-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgba(10, 102, 194, 0.2);
+}
+
+.profile-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0a66c2;
+}
+
+.linkedin-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #0a66c2;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.linkedin-link-btn:hover {
+  background-color: #084a94;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.4);
+}
+
+.profile-section {
+  margin-bottom: 35px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(10, 102, 194, 0.15);
+}
+
+.profile-section:last-of-type {
+  border-bottom: none;
+}
+
+.profile-section h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0a66c2;
+  margin-bottom: 20px;
+}
+
+.profile-summary {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  font-style: italic;
+}
+
+/* Experience Section */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.experience-item {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-left: 4px solid #0a66c2;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.15);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 15px;
+}
+
+.exp-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0a66c2;
+  margin: 0;
+}
+
+.exp-date {
+  background-color: #0a66c2;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.exp-company {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.exp-location {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 10px 0;
+}
+
+.exp-description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+}
+
+/* Education Section */
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.education-item {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-left: 4px solid #0a66c2;
+  border-radius: 6px;
+}
+
+.education-item h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #0a66c2;
+  margin: 0 0 8px 0;
+}
+
+.edu-degree {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.edu-year {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Endorsements/Skills Section */
+.endorsements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.endorsement-badge {
+  display: inline-block;
+  background-color: #0a66c2;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.endorsement-badge:hover {
+  background-color: #084a94;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+/* CTA Section */
+.profile-cta {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid rgba(10, 102, 194, 0.2);
+}
+
+.linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0a66c2;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.linkedin-btn:hover {
+  background-color: #084a94;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(10, 102, 194, 0.4);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .linkedin-card {
+    padding: 25px;
+  }
+
+  .profile-header h2 {
+    font-size: 22px;
+  }
+
+  .exp-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exp-date {
+    margin-top: 8px;
+  }
+
+  .endorsements {
+    justify-content: center;
+  }
+}
