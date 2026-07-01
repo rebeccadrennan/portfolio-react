@@ -63,6 +63,49 @@ const skillPillars = [
   },
 ];
 
+const hackathons = [
+  {
+    title: "IEEE Queens",
+    date: "Oct 2020",
+    project: "Belong",
+    description:
+      "Collaborated in a cross-functional team to design, prototype and pitch a community-focused mobile app helping people stay connected during COVID-19.",
+    skills: ["Mobile App", "Product Design", "Pitching", "Teamwork"],
+  },
+  {
+    title: "HACK THE COVID",
+    date: "Aug 2020",
+    project: "CovidCare",
+    description:
+      "Developed a digital solution to support remote patient monitoring for frontline healthcare workers, collaborating remotely with engineers across the UK.",
+    skills: ["Remote Collaboration", "Healthcare Tech", "Rapid Prototype"],
+  },
+  {
+    title: "Kainos",
+    date: "Jul 2019",
+    project: "Free Seat",
+    description:
+      "Built a web app concept helping customers view seating availability and estimated waiting times before arriving, achieving second place.",
+    skills: ["HTML", "CSS", "JavaScript", "UX"],
+  },
+  {
+    title: "Generation Innovation Programme",
+    date: "Jun 2019",
+    project: "Project Estimation Solution",
+    description:
+      "Led a hackathon team to design an innovative solution for project estimation challenges, creating the user flow and prototype before presenting to Oracle stakeholders.",
+    skills: ["Leadership", "Prototyping", "User Flow", "Stakeholder Pitch"],
+  },
+  {
+    title: "Girls Who ML",
+    date: "Sep 2020",
+    project: "Machine Learning Programme",
+    description:
+      "Completed a practical machine learning programme focused on Python, ML concepts, mentoring and collaborative learning with industry experts.",
+    skills: ["Machine Learning", "Python", "AI", "Workshops"],
+  },
+];
+
 const certifications = [
   {
     title: "GitHub Copilot Certification",
@@ -206,6 +249,41 @@ export const About = () => {
                 <div className="stack-list">
                   {pillar.stack.map((tech) => (
                     <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="hackathon-section sec_sp">
+          <div className="section-heading">
+            <p className="about-eyebrow">Hackathons & Innovation</p>
+            <h2>Rapid prototypes, real-world ideas and pitch-ready products</h2>
+            <p>
+              I love hackathons because they combine everything I enjoy: fast
+              problem solving, user-focused design, technical creativity and
+              pitching new ideas with talented people from different
+              backgrounds.
+            </p>
+          </div>
+
+          <div className="hackathon-grid">
+            {hackathons.map((item) => (
+              <article className="hackathon-card" key={item.title}>
+                <div className="hackathon-top">
+                  <span className="hackathon-date">{item.date}</span>
+                  <span className="hackathon-badge">Innovation Sprint</span>
+                </div>
+
+                <h3>{item.title}</h3>
+                <h4>{item.project}</h4>
+
+                <p>{item.description}</p>
+
+                <div className="hackathon-skills">
+                  {item.skills.map((skill) => (
+                    <span key={skill}>{skill}</span>
                   ))}
                 </div>
               </article>

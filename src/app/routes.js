@@ -5,7 +5,6 @@ import { Home } from "../pages/home";
 import { Portfolio } from "../pages/portfolio";
 import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
-import { LinkedIn } from "../pages/linkedin";
 import { Socialicons } from "../components/socialicons";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
@@ -23,9 +22,6 @@ const AnimatedRoutes = withRouter(({ location }) => (
     </section>
     <section id="portfolio">
       <Portfolio />
-    </section>
-    <section id="linkedin">
-      <LinkedIn />
     </section>
 
     <Socialicons />
