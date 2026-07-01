@@ -1,100 +1,193 @@
 .sec_sp {
-    margin-bottom: calc(3rem + 5.128vw)
+  margin-bottom: calc(3rem + 5.128vw);
 }
 
 .table td,
 .table th {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 
 .t_border {
-    border-color: var(--text-color) !important;
+  border-color: var(--text-color) !important;
 }
 
 .progress-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 15px 0 20px;
-    font-family: 'Raleway';
+  font-size: 16px;
+  font-weight: 700;
+  margin: 15px 0 20px;
+  font-family: "Raleway";
 }
 
 .progress {
-    height: 5px;
-    background: var(--secondary);
-    border-radius: 0;
-    box-shadow: none;
-    margin-bottom: 30px;
-    overflow: visible;
+  height: 5px;
+  background: var(--secondary);
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 30px;
+  overflow: visible;
 }
 
 .progress .progress-bar {
-    position: relative;
-    background: var(--text-color);
-    animation: animate-positive 2s;
-    overflow: visible;
-    opacity: 0.9;
+  position: relative;
+  background: var(--text-color);
+  animation: animate-positive 2s;
+  overflow: visible;
+  opacity: 0.9;
 }
 
 .progress .progress-value {
-    position: absolute;
-    top: -30px;
-    right: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    font-style: italic;
-    color: var(--text-color);
+  position: absolute;
+  top: -30px;
+  right: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  font-style: italic;
+  color: var(--text-color);
 }
 
 @-webkit-keyframes animate-positive {
-    0% {
-        width: 0%;
-    }
+  0% {
+    width: 0%;
+  }
 }
 
 @keyframes animate-positive {
-    0% {
-        width: 0%;
-    }
+  0% {
+    width: 0%;
+  }
 }
 
 .section-title {
-    font-size: 45px;
+  font-size: 45px;
 }
 
 .service__title {
-    padding: 8px 0;
-    border-bottom: solid 2px var(--secondary-color);
+  padding: 8px 0;
+  border-bottom: solid 2px var(--secondary-color);
 }
 
 .service-section .service-category-title {
-    padding-bottom: 4px;
+  padding-bottom: 4px;
 }
-
 
 /*! CSS Used keyframes */
 
 @-webkit-keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-    }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
 }
 
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-    }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+.certification-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.certification-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  transition: 0.35s;
+}
+
+.certification-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+.certification-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+}
+
+.certification-card.blue::before {
+  background: #3b82f6;
+}
+
+.certification-card.green::before {
+  background: #22c55e;
+}
+
+.certification-card.orange::before {
+  background: #f97316;
+}
+
+.certification-card.yellow::before {
+  background: #facc15;
+}
+
+.certification-card.purple::before {
+  background: #8b5cf6;
+}
+
+.cert-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.cert-icon {
+  font-size: 2rem;
+}
+
+.cert-year {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.certification-card h3 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.issuer {
+  color: #a9b3c1;
+  margin-bottom: 18px;
+}
+
+.category {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }

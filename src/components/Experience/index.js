@@ -7,14 +7,23 @@ const experiences = [
     role: "Senior Associate | Full Stack Software Engineer",
     period: "2025 — Present",
     type: "AI Engineering",
-    highlight: "Building full-stack AI proof of concepts and production-ready engineering foundations.",
+    highlight:
+      "Building full-stack AI proof of concepts and production-ready engineering foundations.",
     impact: [
       "Conversational AI, document intelligence and workflow automation",
       "React, TypeScript, Python, LangGraph and LLM-powered systems",
       "REST APIs, WebSockets, OCR pipelines and async processing",
       "Docker, CI/CD, automated testing and reusable templates",
     ],
-    stack: ["React", "TypeScript", "Python", "LangGraph", "LLMs", "Azure", "Docker"],
+    stack: [
+      "React",
+      "TypeScript",
+      "Python",
+      "LangGraph",
+      "LLMs",
+      "Azure",
+      "Docker",
+    ],
   },
   {
     company: "PwC UK",
@@ -28,7 +37,14 @@ const experiences = [
       "Integrated React apps with Python services and async APIs",
       "Led technical huddles and stakeholder demos",
     ],
-    stack: ["React", "TypeScript", "Python", "REST APIs", "WebSockets", "Azure"],
+    stack: [
+      "React",
+      "TypeScript",
+      "Python",
+      "REST APIs",
+      "WebSockets",
+      "Azure",
+    ],
   },
   {
     company: "PwC UK",
