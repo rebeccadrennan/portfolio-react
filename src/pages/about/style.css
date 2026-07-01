@@ -191,3 +191,83 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
+.hackathon-section {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.hackathon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.hackathon-card {
+  padding: 28px;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+}
+
+.hackathon-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.hackathon-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8b9bb3;
+}
+
+.hackathon-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.18);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hackathon-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+}
+
+.hackathon-card h4 {
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  color: #8b9bb3;
+}
+
+.hackathon-card p {
+  margin-bottom: 20px;
+}
+
+.hackathon-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hackathon-skills span {
+  display: inline-flex;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
