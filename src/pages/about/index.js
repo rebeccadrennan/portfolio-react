@@ -4,10 +4,14 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
 import Experience from "../../components/Experience";
 import { meta } from "../../content_option";
+import reframeImage from "../../assets/images/reframe.jpg";
+import TechmakersImage from "../../assets/images/Techmakers.jpg";
+import digitalDNAImage from "../../assets/images/digitalDNA.jpg";
+import womenInTechImage from "../../assets/images/womenInTech.jpg";
 
 const engineeringHighlights = [
   {
-    number: "6+",
+    number: `${new Date().getFullYear() - 2020}+`,
     label: "Years engineering experience",
   },
   {
@@ -157,6 +161,19 @@ const certifications = [
   },
 ];
 
+const ConferenceCard = ({ title, years, description, children }) => {
+  return (
+    <article className="conference-card">
+      <div className="conference-card-header">
+        <h3>{title}</h3>
+        <span className="conference-years">{years}</span>
+      </div>
+      <p>{description}</p>
+      {children && <div className="conference-media">{children}</div>}
+    </article>
+  );
+};
+
 export const About = () => {
   return (
     <HelmetProvider>
@@ -170,10 +187,10 @@ export const About = () => {
           />
         </Helmet>
 
-        <section className="about-hero">
-          <p className="about-eyebrow">Full Stack Software Engineer</p>
+        <section className="about-hero reveal-section">
+          <p className="about-eyebrow reveal-line">Full Stack Software Engineer</p>
 
-          <h1>
+          <h1 className="reveal-line">
             I build polished, scalable software that turns complex ideas into
             real products.
           </h1>
@@ -185,15 +202,6 @@ export const About = () => {
             architecture, building intuitive interfaces, integrating backend
             services and shipping solutions that create real business value.
           </p>
-
-          <div className="about-cta-row">
-            <a href="/portfolio" className="about-primary-link">
-              View Projects
-            </a>
-            <a href="/contact" className="about-secondary-link">
-              Contact Me
-            </a>
-          </div>
         </section>
 
         <section className="impact-grid">
@@ -288,6 +296,71 @@ export const About = () => {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="conferences-section sec_sp">
+          <div className="section-heading">
+            <p className="about-eyebrow">Conferences & Speaking</p>
+            <h2>Events where I’ve shared ideas and built community</h2>
+          </div>
+
+          <div className="conference-timeline">
+            <ConferenceCard
+              title="Women Techmakers Belfast"
+              years="2024, 2025"
+              description="Talks on AI, cloud engineering, developer tooling and networking with engineers across Northern Ireland."
+            >
+              <div className="linkedin-embed">
+                <img
+                  src={TechmakersImage}
+                  alt="Women Techmakers Belfast"
+                  loading="lazy"
+                />
+              </div>
+            </ConferenceCard>
+
+            <ConferenceCard
+              title="Women in Tech Annual Conference"
+              years="2024"
+              description="Exploring leadership, software engineering careers and emerging technologies."
+            >
+              <div className="linkedin-embed">
+                <img
+                  src={womenInTechImage}
+                  alt="Women in Tech Annual Conference"
+                  loading="lazy"
+                />
+              </div>
+            </ConferenceCard>
+
+            <ConferenceCard
+              title="Reframe Women in Tech"
+              years="Manchester • 2024"
+              description="Learning from industry leaders and connecting with software engineers from across the UK."
+            >
+              <div className="linkedin-embed">
+                <img
+                  src={reframeImage}
+                  alt="Reframe Women in Tech"
+                  loading="lazy"
+                />
+              </div>
+            </ConferenceCard>
+
+            <ConferenceCard
+              title="Digital DNA Belfast"
+              years="2022, 2023"
+              description="Northern Ireland's largest technology conference covering AI, startups and software engineering."
+            >
+              <div className="linkedin-embed">
+                <img
+                  src={digitalDNAImage}
+                  alt="Digital DNA Belfast"
+                  loading="lazy"
+                />
+              </div>
+            </ConferenceCard>
           </div>
         </section>
 

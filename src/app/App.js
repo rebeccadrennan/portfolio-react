@@ -5,6 +5,7 @@ import withRouter from "../hooks/withRouter";
 import AppRoutes from "./routes";
 import Headermain from "../header";
 import AnimatedCursor from "../hooks/AnimatedCursor";
+import useRevealOnScroll from "../hooks/useRevealOnScroll";
 import "./App.css";
 
 function _ScrollToTop(props) {
@@ -17,8 +18,11 @@ function _ScrollToTop(props) {
 const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
+  useRevealOnScroll();
+
   return (
     <Router basename={process.env.PUBLIC_URL}>
+      <div className="animated-background" aria-hidden="true" />
       <div className="cursor__dot">
         <AnimatedCursor
           innerSize={15}

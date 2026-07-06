@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import withRouter from "../hooks/withRouter";
 import { Home } from "../pages/home";
-import { Portfolio } from "../pages/portfolio";
 import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
 import { Socialicons } from "../components/socialicons";
@@ -13,18 +12,26 @@ const AnimatedRoutes = withRouter(({ location }) => (
     <section id="home">
       <Home />
     </section>
+    <section id="about">
+      <About />
+    </section>
     <section id="contact">
       {" "}
       <ContactUs />{" "}
     </section>
-    <section id="about">
-      <About />
-    </section>
-    <section id="portfolio">
-      <Portfolio />
-    </section>
 
-    <Socialicons />
+    <section id="footer-section" className="footer-section">
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <p>
+            &copy; {new Date().getFullYear()} Rebecca Drennan. All rights reserved.
+            <br />
+            You reached the end... but hopefully not the end of our conversation!
+          </p>
+        </div>
+      </footer>
+      <Socialicons />
+    </section>
   </div>
 ));
 
@@ -32,7 +39,6 @@ function AppRoutes() {
   return (
     <div className="s_c">
       <AnimatedRoutes />
-      <Socialicons />
     </div>
   );
 }
