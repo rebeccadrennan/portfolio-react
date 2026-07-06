@@ -17,12 +17,12 @@ Install dependencies and run locally:
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
 
 Run checks:
 
 ```bash
-npm test -- --watchAll=false --ci
 npm run build
+npm run preview
 ```

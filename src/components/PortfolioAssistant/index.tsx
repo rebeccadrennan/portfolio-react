@@ -7,14 +7,20 @@ type ChatMessage = {
 };
 
 export default function PortfolioAssistant() {
+  const apiBaseUrl =
+    (import.meta.env.VITE_API_URL as string | undefined)?.trim() ||
+    "http://localhost:8000";
+  const chatEndpoint = `${apiBaseUrl.replace(/\/$/, "")}/chat`;
+
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      text: "Hi! I’m Rebecca’s AI Portfolio Assistant. Ask me about her React, Python, AI, full-stack or project experience.\n\n💰 **Cost optimisation level: 100.** The AI is running on a free cloud instance, so if it's been idle it might need a quick coffee break (up to ~50 seconds) before answering.",
+      text: "Hi! I’m Rebecca’s AI Portfolio Assistant. Ask me about her React, Python, AI, full-stack or project experience.",
     },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [requestCount, setRequestCount] = useState(0);
 
   const askAssistant = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,7 +33,7 @@ export default function PortfolioAssistant() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8000/chat", {
+      const res = await fetch(chatEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,6 +58,7 @@ export default function PortfolioAssistant() {
       ]);
     } finally {
       setLoading(false);
+      setRequestCount((prev) => prev + 1);
     }
   };
 
@@ -72,7 +79,13 @@ export default function PortfolioAssistant() {
             {msg.text}
           </div>
         ))}
-        {loading && <div className="message assistant">Thinking...</div>}
+        {loading && (
+          <div className="message assistant">
+            {requestCount === 0
+              ? "Thinking...\n\ne. 💰 **Cost optimisation level: 100.** The AI is running on a free cloud instance, so if it's been idle it might need a quick coffee break (up to ~50 seconds) before answering."
+              : "Thinking..."}
+          </div>
+        )}
       </div>
 
       <form className="chat-input" onSubmit={askAssistant}>

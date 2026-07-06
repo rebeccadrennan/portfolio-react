@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { VscGrabber, VscClose } from "react-icons/vsc";
 import { logotext, socialprofils } from "../content_option";
 import Themetoggle from "../components/themetoggle";
-import logoUrl from "./../assets/images/CircleProfilePic.svg";
+
+const logoUrl = `${import.meta.env.BASE_URL}CircleProfilePic.svg`;
 
 const Headermain = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -53,6 +54,11 @@ const Headermain = () => {
                   <li className="menu_item">
                     <a onClick={closeMenu} href="#portfolio" className="my-3">
                       Portfolio
+                    </a>
+                  </li>
+                  <li className="menu_item">
+                    <a onClick={closeMenu} href="#assistant" className="my-3">
+                      AI Assistant
                     </a>
                   </li>
                   <li className="menu_item">

@@ -3,7 +3,11 @@ import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
 import { meta } from "../../content/site";
-import { certifications, skillPillars } from "../../content/about";
+import {
+  certifications,
+  educationHighlights,
+  skillPillars,
+} from "../../content/about";
 import reframeImage from "../../assets/images/reframe.jpg";
 import TechmakersImage from "../../assets/images/Techmakers.jpg";
 import digitalDNAImage from "../../assets/images/digitalDNA.jpg";
@@ -66,7 +70,7 @@ export const About = () => {
 
         <section className="conferences-section sec_sp">
           <div className="section-heading">
-            <p className="about-eyebrow">Conferences & Speaking</p>
+            <p className="about-eyebrow">Conferences & Networking</p>
           </div>
 
           <div className="conference-timeline">
@@ -128,15 +132,67 @@ export const About = () => {
           </div>
         </section>
 
+        <section className="education-section sec_sp">
+          <div className="section-heading">
+            <p className="about-eyebrow">Education</p>
+          </div>
+
+          <div className="education-grid">
+            {educationHighlights.map((item) => {
+              const hasLink = Boolean(item.linkUrl && item.ctaLabel);
+
+              const cardBody = (
+                <>
+                  <div className="education-card-top">
+                    <span className="education-institution">
+                      {item.institution}
+                    </span>
+                    <span className="education-year">{item.year}</span>
+                  </div>
+
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+
+                  {hasLink && (
+                    <div className="education-card-footer">
+                      <span className="education-cta" aria-hidden="true">
+                        {item.ctaLabel}
+                        <span className="education-cta-arrow">→</span>
+                      </span>
+                    </div>
+                  )}
+                </>
+              );
+
+              if (hasLink) {
+                return (
+                  <a
+                    className="education-card education-card-link"
+                    key={item.title}
+                    href={item.linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${item.title} - ${item.ctaLabel} (opens in new tab)`}
+                  >
+                    {cardBody}
+                  </a>
+                );
+              }
+
+              return (
+                <article className="education-card" key={item.title}>
+                  {cardBody}
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
         <section className="cert-preview sec_sp">
           <Row>
-            <Col lg="5">
-              <h2 className="color_sec">Certifications</h2>
-              <p>
-                Credentials across AI, cloud, Python, Linux and developer
-                productivity.
-              </p>
-            </Col>
+            <div className="section-heading">
+              <p className="about-eyebrow">Certifications & Awards</p>
+            </div>
 
             <div className="certification-grid">
               {certifications.map((cert) => (
@@ -154,7 +210,31 @@ export const About = () => {
 
                   <p className="issuer">{cert.issuer}</p>
 
-                  <span className="category">{cert.category}</span>
+                  {cert.description && (
+                    <p className="cert-description">{cert.description}</p>
+                  )}
+
+                  {cert.category && (
+                    <span className="category">{cert.category}</span>
+                  )}
+
+                  {cert.badgeLabel && (
+                    <span className="category category-outline">
+                      {cert.badgeLabel}
+                    </span>
+                  )}
+
+                  {cert.linkUrl && cert.ctaLabel && (
+                    <a
+                      className="cert-link"
+                      href={cert.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${cert.title} - ${cert.ctaLabel} (opens in new tab)`}
+                    >
+                      {cert.ctaLabel}
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
