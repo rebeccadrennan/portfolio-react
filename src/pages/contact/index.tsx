@@ -27,7 +27,9 @@ const getEmailErrorDetails = (error: unknown) => {
   const status = emailError?.status;
   const text = emailError?.text;
   const message =
-    text || emailError?.message || (error instanceof Error ? error.message : "Unknown error");
+    text ||
+    emailError?.message ||
+    (error instanceof Error ? error.message : "Unknown error");
   return { status, message };
 };
 
@@ -58,9 +60,7 @@ export const ContactUs = () => {
       !contactConfig.YOUR_TEMPLATE_ID ||
       !contactConfig.YOUR_USER_ID
     ) {
-      const encodedSubject = encodeURIComponent(
-        subject || "Portfolio Contact",
-      );
+      const encodedSubject = encodeURIComponent(subject || "Portfolio Contact");
       const encodedBody = encodeURIComponent(
         `Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`,
       );
@@ -122,7 +122,9 @@ export const ContactUs = () => {
             : "";
 
       if (status === 422) {
-        const fallbackSubject = encodeURIComponent(subject || "Portfolio Contact");
+        const fallbackSubject = encodeURIComponent(
+          subject || "Portfolio Contact",
+        );
         const fallbackBody = encodeURIComponent(
           `Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`,
         );

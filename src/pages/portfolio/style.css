@@ -56,7 +56,11 @@
   font-family: Marcellus;
   font-size: 1.35rem;
   background:
-    radial-gradient(circle at 20% 20%, rgba(148, 212, 196, 0.35), transparent 45%),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(148, 212, 196, 0.35),
+      transparent 45%
+    ),
     radial-gradient(circle at 80% 80%, rgba(42, 36, 94, 0.7), transparent 42%),
     linear-gradient(140deg, rgba(20, 15, 60, 0.95), rgba(5, 1, 33, 0.95));
 }
