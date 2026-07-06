@@ -39,72 +39,14 @@
   color: var(--text-color-2);
 }
 
-.br-top,
-.br-bottom,
-.br-right,
-.br-left {
-  position: fixed;
-  z-index: 999999;
-  background: var(--primary-color);
-}
-
-.br-top {
-  top: 0;
-  height: 10px;
-  left: 0;
-  width: 100%;
-}
-
-.br-bottom {
-  bottom: 0;
-  left: 0;
-  height: 10px;
-  width: 100%;
-  animation: slide-highlight 4s ease-in-out infinite;
-}
-
-.br-right {
-  width: 10px;
-  right: 0;
-  top: 0;
-  height: 100%;
-  animation: pulse-highlight 5s ease-in-out infinite;
-}
-
-.br-left {
-  width: 10px;
-  left: 0;
-  top: 0;
-  height: 100%;
-  animation: pulse-highlight 5s ease-in-out infinite alternate;
-}
-
-@keyframes slide-highlight {
-  0%, 100% {
-    transform: translateX(0);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateX(-8px);
-    opacity: 0.4;
-  }
-}
-
-@keyframes pulse-highlight {
-  0%, 100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 0.2;
-  }
-}
-
 .menu__button:hover {
   transform: scale(1.05);
 }
 
 .site__navigation .the_menu .menu_item > a {
-  transition: color 250ms cubic-bezier(0, 0, 0.58, 1), transform 250ms ease;
+  transition:
+    color 250ms cubic-bezier(0, 0, 0.58, 1),
+    transform 250ms ease;
 }
 
 .site__navigation .the_menu .menu_item > a:hover {
