@@ -38,7 +38,28 @@
     font-size: 12px;
     text-align: center;
     margin-bottom: 10px;
-    transition: all .3s;
+    transition: transform .28s ease, color .28s ease;
+}
+
+.stick_follow_icon ul li:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.stick_follow_icon ul li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.16);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.stick_follow_icon ul li a:hover {
+    background: rgba(148, 212, 196, 0.2);
+    color: var(--secondary-color);
+    transform: translateY(-4px);
 }
 
 .stick_follow_icon p:after {
@@ -50,6 +71,15 @@
     display: block;
     position: absolute;
     background-color: var(--text-color);
+}
+
+@keyframes float-icons {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.stick_follow_icon ul li {
+    animation: float-icons 6s ease-in-out infinite;
 }
 
 @media only screen and (max-width: 991px) {
