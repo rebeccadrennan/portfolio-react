@@ -16,6 +16,23 @@ type ContactFormState = {
   variant: "success" | "danger" | "";
 };
 
+type EmailJsLikeError = {
+  status?: number;
+  text?: string;
+  message?: string;
+};
+
+const getEmailErrorDetails = (error: unknown) => {
+  const emailError = error as EmailJsLikeError | undefined;
+  const status = emailError?.status;
+  const text = emailError?.text;
+  const message =
+    text ||
+    emailError?.message ||
+    (error instanceof Error ? error.message : "Unknown error");
+  return { status, message };
+};
+
 export const ContactUs = () => {
   const [formData, setFormdata] = useState<ContactFormState>({
     email: "",
@@ -32,19 +49,23 @@ export const ContactUs = () => {
     event.preventDefault();
     setFormdata((prev) => ({ ...prev, loading: true, show: false }));
 
+    const senderName = formData.name.trim();
+    const senderEmail = formData.email.trim().toLowerCase();
+    const subject = formData.subject.trim();
+    const message = formData.message.trim();
+    const recipientEmail = contactConfig.YOUR_EMAIL.trim().toLowerCase();
+
     if (
       !contactConfig.YOUR_SERVICE_ID ||
       !contactConfig.YOUR_TEMPLATE_ID ||
       !contactConfig.YOUR_USER_ID
     ) {
-      const subject = encodeURIComponent(
-        formData.subject || "Portfolio Contact",
-      );
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
+      const encodedSubject = encodeURIComponent(subject || "Portfolio Contact");
+      const encodedBody = encodeURIComponent(
+        `Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`,
       );
 
-      window.location.href = `mailto:${contactConfig.YOUR_EMAIL}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}`;
 
       setFormdata((prev) => ({
         ...prev,
@@ -57,11 +78,15 @@ export const ContactUs = () => {
     }
 
     const templateParams = {
-      from_name: formData.email,
-      user_name: formData.name,
-      subject: formData.subject,
-      to_name: contactConfig.YOUR_EMAIL,
-      message: formData.message,
+      from_name: senderName,
+      from_email: senderEmail,
+      user_name: senderName,
+      user_email: senderEmail,
+      reply_to: senderEmail,
+      subject,
+      to_name: "Rebecca Drennan",
+      to_email: recipientEmail,
+      message,
     };
 
     try {
@@ -80,14 +105,39 @@ export const ContactUs = () => {
         variant: "success",
         show: true,
       }));
-    } catch (error) {
-      const errorText =
-        error instanceof Error ? error.message : "Unknown error";
-      console.log(errorText);
+    } catch (error: unknown) {
+      const { status, message } = getEmailErrorDetails(error);
+      const statusLabel = typeof status === "number" ? ` (${status})` : "";
+      console.error("EmailJS send failed", {
+        status,
+        message,
+        origin: window.location.origin,
+      });
+
+      const helpText =
+        status === 412
+          ? " Check EmailJS settings for public key, service/template IDs, and allowed origins."
+          : status === 422
+            ? " Check the EmailJS template 'To email' field and map it to {{to_email}} or a valid fixed address."
+            : "";
+
+      if (status === 422) {
+        const fallbackSubject = encodeURIComponent(
+          subject || "Portfolio Contact",
+        );
+        const fallbackBody = encodeURIComponent(
+          `Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`,
+        );
+        window.location.href = `mailto:${recipientEmail}?subject=${fallbackSubject}&body=${fallbackBody}`;
+      }
+
       setFormdata((prev) => ({
         ...prev,
         loading: false,
-        alertmessage: `Failed to send! ${errorText}`,
+        alertmessage:
+          status === 422
+            ? "Email service rejected the recipient address. Opening your email app as a fallback."
+            : `Failed to send${statusLabel}! ${message}.${helpText}`,
         variant: "danger",
         show: true,
       }));

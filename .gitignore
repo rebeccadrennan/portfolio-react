@@ -2,5 +2,6 @@ node_modules/
 .qodo/
 dist/
 build/
+.vite/
 .env*
 !.env.example

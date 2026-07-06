@@ -15,6 +15,9 @@
 }
 
 .portfolio-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.06),
@@ -53,12 +56,19 @@
   font-family: Marcellus;
   font-size: 1.35rem;
   background:
-    radial-gradient(circle at 20% 20%, rgba(148, 212, 196, 0.35), transparent 45%),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(148, 212, 196, 0.35),
+      transparent 45%
+    ),
     radial-gradient(circle at 80% 80%, rgba(42, 36, 94, 0.7), transparent 42%),
     linear-gradient(140deg, rgba(20, 15, 60, 0.95), rgba(5, 1, 33, 0.95));
 }
 
 .portfolio-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 1rem 1rem 1.2rem;
 }
 
@@ -123,28 +133,41 @@
 }
 
 .portfolio-actions {
-  min-height: 32px;
+  margin-top: auto;
+  min-height: 44px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 0.6rem;
+  padding-top: 0.5rem;
 }
 
 .portfolio-actions a {
   display: inline-block;
-  border: 1px solid var(--text-color);
+  border: 1px solid rgba(148, 212, 196, 0.8);
   border-radius: 10px;
-  padding: 0.38rem 0.72rem;
-  font-size: 0.88rem;
+  padding: 0.48rem 0.88rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background: rgba(148, 212, 196, 0.14);
+  color: var(--text-color);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
   text-decoration: none;
   transition:
     background-color 0.25s ease,
     color 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .portfolio-actions a:hover {
-  background-color: var(--text-color);
+  background-color: rgba(148, 212, 196, 0.92);
   color: var(--bg-color);
-  border-color: var(--text-color);
+  border-color: rgba(148, 212, 196, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3);
 }
 
 .portfolio-private-note {

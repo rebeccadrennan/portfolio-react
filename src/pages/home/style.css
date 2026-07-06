@@ -54,6 +54,30 @@ section {
   min-width: 0;
 }
 
+@media (min-width: 992px) {
+  .intro_sec {
+    gap: clamp(2rem, 4vw, 5rem);
+  }
+
+  .intro_sec > .text {
+    flex: 1.35 1 0;
+  }
+
+  .intro_sec > .reveal-image {
+    flex: 0.95 1 0;
+    max-width: 42%;
+  }
+
+  .intro_sec .text .align-self-center {
+    width: 100%;
+  }
+
+  .intro_sec .intro {
+    max-width: 760px;
+    padding-right: 0;
+  }
+}
+
 @media (max-width: 991.98px) {
   .intro_sec .text,
   .intro_sec .h_bg-image {
@@ -68,6 +92,15 @@ section {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   padding-right: clamp(12px, 2vw, 28px);
+}
+
+.intro_sec .text .align-self-center {
+  width: min(680px, 100%);
+}
+
+.home .intro_sec .text p {
+  word-break: normal;
+  hyphens: none;
 }
 
 @media (max-width: 991.98px) {
