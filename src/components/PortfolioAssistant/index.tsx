@@ -7,6 +7,11 @@ type ChatMessage = {
 };
 
 export default function PortfolioAssistant() {
+  const apiBaseUrl =
+    (import.meta.env.VITE_API_URL as string | undefined)?.trim() ||
+    "http://localhost:8000";
+  const chatEndpoint = `${apiBaseUrl.replace(/\/$/, "")}/chat`;
+
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
@@ -27,7 +32,7 @@ export default function PortfolioAssistant() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8000/chat", {
+      const res = await fetch(chatEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
