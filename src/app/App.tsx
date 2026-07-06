@@ -18,11 +18,16 @@ function ScrollToTop({ children }: PropsWithChildren) {
   return <>{children}</>;
 }
 
+const routerBase =
+  import.meta.env.BASE_URL === "/"
+    ? "/"
+    : import.meta.env.BASE_URL.replace(/\/$/, "");
+
 export default function App() {
   useRevealOnScroll();
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={routerBase}>
       <span className="animated-background" aria-hidden="true" />
       <div className="cursor__dot">
         <AnimatedCursor

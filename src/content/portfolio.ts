@@ -1,12 +1,13 @@
 import type { PortfolioItem } from "./site";
 import jgilbertFurnitureGif from "../assets/gif/jgilbertFurniture.gif";
+import portfolioGif from "../assets/gif/Portfolio.gif";
 import swaggerUiGif from "../assets/gif/SwaggerUI.gif";
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: "James Gilbert Furniture Website",
+    title: "Business Website & Lead Generation Platform",
     summary:
-      "Business website built in HTML for a family furniture business, focused on clear service information and local customer trust.",
+      "Designed and developed a responsive business website focused on performance, SEO and customer conversion. Built a clean information architecture, interactive contact experience and local search optimisation to help establish a strong online presence for a family business.",
     tech: ["HTML", "CSS", "Google Spark"],
     category: "Client Website",
     visibility: "Public",
@@ -14,21 +15,30 @@ export const portfolioItems: PortfolioItem[] = [
     liveUrl: "https://www.jgilbertfurniture.co.uk/",
   },
   {
-    title: "Portfolio Website Frontend",
+    title: "This Web App :)",
     summary:
       "Single-page React frontend for my portfolio with section-based navigation, polished UI animation, and responsive design.",
     tech: ["React", "TypeScript", "CSS"],
     category: "Personal Project",
     visibility: "Public",
-    liveUrl: "#home",
+    imageUrl: portfolioGif,
+    liveUrl: "https://github.com/rebeccadrennan/portfolio-react",
   },
   {
-    title: "Portfolio Project Backend",
+    title: "This Project's AI Service",
     summary:
-      "Backend service layer powering contact and integration workflows for this portfolio ecosystem.",
-    tech: ["API", "Node.js", "Integrations"],
+      "Modular backend powering AI conversations, secure contact workflows, prompt orchestration and external service integrations. Designed with scalable APIs, configuration-driven architecture and production deployment in mind.",
+    tech: [
+      "FastAPI",
+      "Python",
+      "OpenAI",
+      "Docker",
+      "REST API",
+      "GitHub Actions",
+    ],
     category: "Backend",
-    visibility: "Private",
+    visibility: "Public",
     imageUrl: swaggerUiGif,
+    repoUrl: "https://github.com/rebeccadrennan/portfolio-ai-api",
   },
 ];

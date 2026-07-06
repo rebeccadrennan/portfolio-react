@@ -14,16 +14,14 @@ export const Portfolio = () => {
           <title> Portfolio | {meta.title} </title>{" "}
           <meta name="description" content={meta.description} />
         </Helmet>
-        <Row className="mb-5 mt-3 pt-md-3">
-          <Col lg="9">
-            <h1 className="display-4 mb-4"> Portfolio </h1>{" "}
-            <hr className="t_border my-4 ml-0 text-left" />
-            <p className="portfolio-lead mb-3">
-              These are selected public projects. I have many more client and
-              internal projects that I cannot share publicly.
-            </p>
-          </Col>
-        </Row>
+        <div className="section-heading">
+          <p className="about-eyebrow">Featured Projects</p>
+        </div>
+        <p className="portfolio-lead mb-3">
+          Public work demonstrating my approach to software engineering, AI
+          integration and product development. Most commercial work cannot be
+          shared publicly due to client confidentiality.
+        </p>
 
         <div className="portfolio-grid mb-5">
           {portfolioItems.map((data) => {
@@ -33,6 +31,12 @@ export const Portfolio = () => {
               !data.liveUrl.startsWith("#");
             const hasInternalLink =
               typeof data.liveUrl === "string" && data.liveUrl.startsWith("#");
+            const hasRepoLink =
+              typeof data.repoUrl === "string" && data.repoUrl.length > 0;
+            const externalLabel =
+              hasExternalLink && data.liveUrl?.includes("github.com")
+                ? "View GitHub Repo"
+                : "View Live Site";
 
             return (
               <article key={data.title} className="portfolio-card reveal-card">
@@ -68,13 +72,18 @@ export const Portfolio = () => {
                   <div className="portfolio-actions">
                     {hasExternalLink ? (
                       <a href={data.liveUrl} target="_blank" rel="noreferrer">
-                        View Live Site
+                        {externalLabel}
                       </a>
                     ) : null}
                     {hasInternalLink ? (
                       <a href={data.liveUrl}>View Frontend Section</a>
                     ) : null}
-                    {!hasExternalLink && !hasInternalLink ? (
+                    {hasRepoLink ? (
+                      <a href={data.repoUrl} target="_blank" rel="noreferrer">
+                        View GitHub Repo
+                      </a>
+                    ) : null}
+                    {!hasExternalLink && !hasInternalLink && !hasRepoLink ? (
                       <span className="portfolio-private-note">
                         Details available on request.
                       </span>
