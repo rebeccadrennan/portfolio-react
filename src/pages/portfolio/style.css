@@ -2,16 +2,16 @@
     column-width: 15em;
     -moz-column-width: 15em;
     -webkit-column-width: 15em;
-    column-gap: 4rem;
-    -moz-column-gap: 4rem;
-    -webkit-column-gap: 4rem;
+    column-gap: 5rem;
+    -moz-column-gap: 5rem;
+    -webkit-column-gap: 5rem;
 }
 
 .po_item {
     display: inline-block;
     width: 100%;
     text-align: center;
-    margin: 0.5rem auto;
+    margin: 1rem auto;
     position: relative;
     background: var(--secondary-color);
     padding: 6px;

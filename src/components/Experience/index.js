@@ -67,8 +67,8 @@ export default function Experience() {
   const current = experiences[active];
 
   return (
-    <section className="experience-section">
-      <div className="experience-header">
+    <section className="experience-section reveal-section">
+      <div className="experience-header reveal-text">
         <p className="eyebrow">Career Timeline</p>
         <h2>Engineering products from idea to production</h2>
         <p>
