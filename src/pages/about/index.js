@@ -2,44 +2,19 @@ import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
-import Experience from "../../components/Experience";
+import PortfolioAssistant from "../../components/PortfolioAssistant";
 import { meta } from "../../content_option";
 import reframeImage from "../../assets/images/reframe.jpg";
 import TechmakersImage from "../../assets/images/Techmakers.jpg";
 import digitalDNAImage from "../../assets/images/digitalDNA.jpg";
 import womenInTechImage from "../../assets/images/womenInTech.jpg";
 
-const engineeringHighlights = [
-  {
-    number: `${new Date().getFullYear() - 2020}+`,
-    label: "Years engineering experience",
-  },
-  {
-    number: "1,000+",
-    label: "Users on launch day",
-  },
-  {
-    number: "AI",
-    label: "LLMs, LangGraph & document intelligence",
-  },
-  {
-    number: "Cloud",
-    label: "Azure, AWS, Docker & CI/CD",
-  },
-];
-
 const skillPillars = [
   {
     title: "Frontend Engineering",
     description:
       "React and TypeScript applications with reusable component libraries, complex state management, interactive dashboards and polished user experiences.",
-    stack: [
-      "React",
-      "TypeScript",
-      "AppKit",
-      "WebSockets",
-      "Data Visualisation",
-    ],
+    stack: ["React", "TypeScript", "WebSockets", "Data Visualisation"],
   },
   {
     title: "AI & Automation",
@@ -188,7 +163,9 @@ export const About = () => {
         </Helmet>
 
         <section className="about-hero reveal-section">
-          <p className="about-eyebrow reveal-line">Full Stack Software Engineer</p>
+          <p className="about-eyebrow reveal-line">
+            Full Stack Software Engineer
+          </p>
 
           <h1 className="reveal-line">
             I build polished, scalable software that turns complex ideas into
@@ -204,50 +181,11 @@ export const About = () => {
           </p>
         </section>
 
-        <section className="impact-grid">
-          {engineeringHighlights.map((item) => (
-            <article className="impact-card" key={item.label}>
-              <strong>{item.number}</strong>
-              <span>{item.label}</span>
-            </article>
-          ))}
-        </section>
-
-        <section className="about-story sec_sp">
-          <Row>
-            <Col lg="5">
-              <h2 className="color_sec">How I Engineer</h2>
-            </Col>
-
-            <Col lg="7">
-              <p>
-                My background spans enterprise frontend leadership, full-stack
-                AI prototypes, cloud automation and internal platforms. I’ve
-                built conversational AI tools, document intelligence systems,
-                analytical dashboards, workflow automation solutions and
-                internal engineering platforms adopted by large user groups.
-              </p>
-
-              <p>
-                I care about more than just getting features working. I like
-                creating reusable foundations, clean component systems, secure
-                configuration, automated delivery pipelines and products that
-                are genuinely enjoyable to use.
-              </p>
-            </Col>
-          </Row>
-        </section>
-
         <section className="sec_sp">
-          <Experience />
+          <PortfolioAssistant />
         </section>
 
         <section className="skills-showcase sec_sp">
-          <div className="section-heading">
-            <p className="about-eyebrow">Technical Strengths</p>
-            <h2>Where I can add value quickly</h2>
-          </div>
-
           <div className="skill-pillar-grid">
             {skillPillars.map((pillar) => (
               <article className="skill-pillar-card" key={pillar.title}>
@@ -302,7 +240,6 @@ export const About = () => {
         <section className="conferences-section sec_sp">
           <div className="section-heading">
             <p className="about-eyebrow">Conferences & Speaking</p>
-            <h2>Events where I’ve shared ideas and built community</h2>
           </div>
 
           <div className="conference-timeline">
@@ -400,3 +337,4 @@ export const About = () => {
     </HelmetProvider>
   );
 };
+

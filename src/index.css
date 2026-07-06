@@ -1,3 +1,6 @@
+@import "./header/style.css";
+@import "./pages/contact/style.css";
+
 :root {
   --bg-color: #050121; /* Slightly lighter than pure black */
   --primary-color: #140f3c; /* Dark but not too flat */
@@ -21,6 +24,10 @@
 html,
 body {
   height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -88,8 +95,8 @@ p {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .cursor__dot div {
