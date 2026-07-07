@@ -13,10 +13,12 @@ type ChatMessage = {
 };
 
 export default function PortfolioAssistant() {
-  const apiBaseUrl =
-    (import.meta.env.VITE_API_URL as string | undefined)?.trim() ||
-    "http://localhost:8000";
-  const chatEndpoint = `${apiBaseUrl.replace(/\/$/, "")}/chat`;
+  const apiBaseUrl = (
+    import.meta.env.VITE_API_URL as string | undefined
+  )?.trim();
+  const chatEndpoint = apiBaseUrl
+    ? `${apiBaseUrl.replace(/\/$/, "")}/chat`
+    : "";
   const messagesViewportRef = useRef<HTMLDivElement | null>(null);
 
   const suggestedQuestions = [
@@ -51,6 +53,17 @@ export default function PortfolioAssistant() {
   const sendMessage = async (messageText: string) => {
     const trimmed = messageText.trim();
     if (!trimmed || loading) return;
+
+    if (!chatEndpoint) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          text: "The assistant is not configured for this deployment. Set VITE_API_URL to the hosted API base URL.",
+        },
+      ]);
+      return;
+    }
 
     const userMessage: ChatMessage = { role: "user", text: trimmed };
     setMessages((prev) => [...prev, userMessage]);
