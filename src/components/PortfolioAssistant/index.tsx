@@ -167,11 +167,9 @@ export default function PortfolioAssistant() {
                     ) : (
                       <>
                         <strong>Thinking...</strong> Rebecca knows how to scale
-                        cloud infrastructure. She also knows how to avoid
-                        paying for it. First reply may take up to <strong>
-                          30 seconds
-                        </strong>
-                        . 😄
+                        cloud infrastructure. She also knows how to avoid paying
+                        for it. First reply may take up to{" "}
+                        <strong>30 seconds</strong>. 😄
                       </>
                     )}
                   </p>

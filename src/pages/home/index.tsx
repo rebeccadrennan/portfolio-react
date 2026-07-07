@@ -47,7 +47,7 @@ export const Home = () => {
                   {introdata.title}
                 </h2>
                 <div style={{ marginBottom: "1.5rem" }}></div>
-        
+
                 <h1 className="fluidz-48 mb-1x">
                   <Typewriter
                     options={{
