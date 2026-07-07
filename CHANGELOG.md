@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Enhanced README with badges and comprehensive documentation
 - ESLint and Prettier configuration for code quality
 - TypeScript strict mode enabled for better type safety
@@ -17,16 +18,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automated build optimization
 
 ### Changed
+
 - Updated TypeScript target to ES2020
 - Improved module resolution strategy
 - Better component organization
 
 ### Fixed
+
 - Type safety improvements throughout the codebase
 
 ## [0.1.0] - 2024-01-01
 
 ### Added
+
 - Initial project setup with React 18 and TypeScript
 - React Router for navigation
 - Bootstrap 5 responsive design
@@ -43,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Pages deployment setup
 
 ### Features
+
 - **Home**: Landing page with animated hero content
 - **About**: Personal and professional information
 - **Portfolio**: Showcase of projects and work
@@ -54,6 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Versioning
 
 This project follows [Semantic Versioning](https://semver.org/):
+
 - **MAJOR** version for incompatible API changes
 - **MINOR** version for new functionality in a backwards compatible manner
 - **PATCH** version for backwards compatible bug fixes

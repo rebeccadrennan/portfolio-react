@@ -14,16 +14,19 @@ Please allow the maintainers time to respond and patch the vulnerability before 
 ## Security Considerations
 
 ### Dependencies
+
 - Keep dependencies up to date
 - Run `npm audit` regularly to check for known vulnerabilities
 - Review security advisories in CHANGELOG
 
 ### Environment Variables
+
 - Never commit `.env` files with real credentials
 - Use `.env.example` as a template
 - Always use environment variables for sensitive data
 
 ### Code Security
+
 - Always use HTTPS in production
 - Validate user input on both client and server
 - Use Content Security Policy (CSP) headers
@@ -31,6 +34,7 @@ Please allow the maintainers time to respond and patch the vulnerability before 
 - Don't expose API keys in frontend code
 
 ### Deployment
+
 - Use HTTPS/TLS for all connections
 - Set secure headers (X-Frame-Options, X-Content-Type-Options, etc.)
 - Enable security headers in your hosting platform
@@ -47,8 +51,8 @@ Please allow the maintainers time to respond and patch the vulnerability before 
 
 ## Supported Versions
 
-| Version | Supported |
-|---------|-----------|
+| Version | Supported  |
+| ------- | ---------- |
 | 0.1.x   | ✅ Current |
 
 ## Best Practices
