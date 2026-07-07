@@ -5,6 +5,7 @@ This guide covers everything you need to know for developing on the portfolio we
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 16.0 or higher
 - npm 7.0+ or yarn 1.22+
 - Git
@@ -39,6 +40,7 @@ VITE_API_URL=https://api.example.com
 ```
 
 To obtain EmailJS credentials:
+
 1. Sign up at [EmailJS](https://www.emailjs.com/)
 2. Create a service and email template
 3. Copy the IDs to your `.env.local`
@@ -147,18 +149,15 @@ npm run format:check
 ### Creating a New Component
 
 ```tsx
-import React from 'react';
-import './ComponentName.css';
+import React from "react";
+import "./ComponentName.css";
 
 interface ComponentNameProps {
   title: string;
   onAction?: () => void;
 }
 
-export default function ComponentName({ 
-  title, 
-  onAction 
-}: ComponentNameProps): JSX.Element {
+export default function ComponentName({ title, onAction }: ComponentNameProps): JSX.Element {
   return (
     <div className="component-name">
       <h2>{title}</h2>
@@ -249,6 +248,7 @@ Follow conventional commits:
 ```
 
 Types:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation
@@ -259,6 +259,7 @@ Types:
 - `chore`: Dependency updates, tooling
 
 Example:
+
 ```
 feat: add portfolio project filtering
 
@@ -280,8 +281,8 @@ Closes #123
 ### Console Logging
 
 ```tsx
-if (process.env.NODE_ENV === 'development') {
-  console.log('Debug info:', data);
+if (process.env.NODE_ENV === "development") {
+  console.log("Debug info:", data);
 }
 ```
 

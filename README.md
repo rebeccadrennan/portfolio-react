@@ -27,22 +27,23 @@
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|-----------|---------|
-| **React 18** | UI framework |
-| **TypeScript** | Type-safe JavaScript |
-| **Vite** | Lightning-fast build tool |
-| **React Router v6** | Client-side routing |
-| **Bootstrap 5** | Responsive CSS framework |
-| **React Bootstrap** | Bootstrap components as React components |
-| **EmailJS** | Email sending without backend |
-| **React Icons** | Icon library |
-| **Typewriter Effect** | Animated text typing |
+| Technology            | Purpose                                  |
+| --------------------- | ---------------------------------------- |
+| **React 18**          | UI framework                             |
+| **TypeScript**        | Type-safe JavaScript                     |
+| **Vite**              | Lightning-fast build tool                |
+| **React Router v6**   | Client-side routing                      |
+| **Bootstrap 5**       | Responsive CSS framework                 |
+| **React Bootstrap**   | Bootstrap components as React components |
+| **EmailJS**           | Email sending without backend            |
+| **React Icons**       | Icon library                             |
+| **Typewriter Effect** | Animated text typing                     |
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 16+ 
+
+- Node.js 16+
 - npm or yarn
 
 ### Installation
@@ -97,16 +98,20 @@ src/
 ## 🎨 Customization
 
 ### Update Content
+
 Edit the files in `src/content/` to personalize your portfolio:
+
 - `site.ts` - Site metadata and settings
 - `about.ts` - About section content
 - `portfolio.ts` - Project showcase
 - `contact.ts` - Contact information
 
 ### Theme Colors
+
 Modify the CSS variables in `src/index.css` to match your brand colors.
 
 ### Environment Variables
+
 Create a `.env.local` file (copy from `.env.example`):
 
 ```env
@@ -118,17 +123,20 @@ VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
 ## 🚀 Deployment
 
 ### GitHub Pages
+
 ```bash
 npm run predeploy
 npm run deploy
 ```
 
 ### Vercel
+
 1. Connect your repository to Vercel
 2. Set environment variables in project settings
 3. Deploy with a single click
 
 ### Netlify
+
 1. Connect your repository
 2. Set build command: `npm run build`
 3. Set publish directory: `build`
@@ -136,6 +144,7 @@ npm run deploy
 ## ♿ Accessibility
 
 This portfolio is built with accessibility in mind:
+
 - Semantic HTML structure
 - ARIA labels and descriptions
 - Keyboard navigation support

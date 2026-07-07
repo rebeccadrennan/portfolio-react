@@ -37,6 +37,7 @@ cp .env.example .env.production
 The repository includes a GitHub Actions workflow that automatically builds and deploys on push to `main` branch.
 
 1. **Push to main branch**
+
    ```bash
    git checkout main
    git merge develop
@@ -151,17 +152,20 @@ Create `netlify.toml` for advanced configuration:
 ### Using Nginx
 
 1. **Build the project**
+
    ```bash
    npm install
    npm run build
    ```
 
 2. **Upload build files**
+
    ```bash
    scp -r build/* user@your-server:/var/www/portfolio/
    ```
 
 3. **Configure Nginx**
+
    ```nginx
    server {
      listen 80;
@@ -265,6 +269,7 @@ docker run -p 3000:3000 portfolio:latest
 **Problem**: Refreshing the page shows 404 error.
 
 **Solution**: Configure your server to serve `index.html` for all routes:
+
 - **Netlify**: Automatic for SPA
 - **Vercel**: Automatic for SPA
 - **GitHub Pages**: Add redirect rules
@@ -275,6 +280,7 @@ docker run -p 3000:3000 portfolio:latest
 **Problem**: Environment variables are undefined.
 
 **Solution**:
+
 - Ensure variables start with `VITE_` prefix
 - Variables must be set in deployment environment
 - Rebuild after updating environment variables
@@ -285,6 +291,7 @@ docker run -p 3000:3000 portfolio:latest
 **Problem**: Deployment build fails.
 
 **Solution**:
+
 - Check Node.js version compatibility
 - Verify all dependencies are in `package.json`
 - Run `npm ci` instead of `npm install`
@@ -295,6 +302,7 @@ docker run -p 3000:3000 portfolio:latest
 **Problem**: Contact form doesn't send emails.
 
 **Solution**:
+
 - Verify EmailJS credentials in environment
 - Check EmailJS service and template IDs
 - Verify email template variable names
@@ -306,12 +314,14 @@ docker run -p 3000:3000 portfolio:latest
 If deployment goes wrong, rollback to previous version:
 
 ### GitHub Pages
+
 ```bash
 git revert HEAD~1
 git push origin main
 ```
 
 ### Vercel/Netlify
+
 - Go to Deployments
 - Select previous successful deployment
 - Click "Rollback"
@@ -321,6 +331,7 @@ git push origin main
 ## Support
 
 For deployment issues, check:
+
 - Platform-specific documentation
 - GitHub Issues for known problems
 - Build logs for error messages
@@ -329,6 +340,7 @@ For deployment issues, check:
 ## Next Steps
 
 After deployment:
+
 1. Monitor performance metrics
 2. Gather user feedback
 3. Plan improvements
