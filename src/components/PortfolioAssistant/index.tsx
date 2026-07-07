@@ -17,7 +17,7 @@ export default function PortfolioAssistant() {
     (import.meta.env.VITE_API_URL as string | undefined)?.trim() ||
     "http://localhost:8000";
   const chatEndpoint = `${apiBaseUrl.replace(/\/$/, "")}/chat`;
-  const chatEndRef = useRef<HTMLDivElement | null>(null);
+  const messagesViewportRef = useRef<HTMLDivElement | null>(null);
 
   const suggestedQuestions = [
     "What AI projects has Rebecca built?",
@@ -34,9 +34,18 @@ export default function PortfolioAssistant() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const hasPriorAssistantReply = messages.some(
+    (message, index) => message.role === "assistant" && index > 0,
+  );
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const viewport = messagesViewportRef.current;
+    if (!viewport) return;
+
+    viewport.scrollTo({
+      top: viewport.scrollHeight,
+      behavior: "smooth",
+    });
   }, [messages, loading]);
 
   const sendMessage = async (messageText: string) => {
@@ -101,27 +110,25 @@ export default function PortfolioAssistant() {
           <div className="assistantHeaderContent">
             <span className="assistantBadge">✨ Built by Rebecca</span>
             <h2>AI Portfolio Assistant</h2>
-            <p className="assistantLead">
-              Ask about my React, Python, AI, WebSocket, dashboard and
-              full-stack engineering experience.
-            </p>
-            <p className="assistantSecondary">
-              Powered by a FastAPI + Python backend, with a React frontend and
-              Gemini-powered responses.
-            </p>
           </div>
           <a className="assistantCta" href="#portfolio">
-            <span className="assistantCtaTitle">How I built this</span>
+            <span className="assistantCtaTitle">
+              Interested in how I built this?
+            </span>
             <span className="assistantCtaBody">
               Explore the architecture, backend workflow, prompt design and
               deployment approach behind this AI feature.
             </span>
-            <span className="assistantCtaAction">View project breakdown →</span>
+            <span className="assistantCtaAction">View Project →</span>
           </a>
         </div>
 
         <div className="chatPanel">
-          <div className="messagesViewport" aria-live="polite">
+          <div
+            className="messagesViewport"
+            aria-live="polite"
+            ref={messagesViewportRef}
+          >
             {messages.map((msg, index) => (
               <article
                 key={`${msg.role}-${index}`}
@@ -154,12 +161,21 @@ export default function PortfolioAssistant() {
                   <span className="assistantBubbleIcon" aria-hidden="true">
                     ✦
                   </span>
-                  <p>Thinking...</p>
+                  <p>
+                    {hasPriorAssistantReply ? (
+                      <strong>Thinking...</strong>
+                    ) : (
+                      <>
+                        <strong>Thinking...</strong> Rebecca knows how to scale
+                        cloud infrastructure. She also knows how to avoid paying
+                        for it. First reply may take up to{" "}
+                        <strong>30 seconds</strong>. 😄
+                      </>
+                    )}
+                  </p>
                 </div>
               </article>
             ) : null}
-
-            <div ref={chatEndRef} />
           </div>
 
           <div className="suggestionChips" aria-label="Suggested questions">

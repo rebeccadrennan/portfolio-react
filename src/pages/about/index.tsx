@@ -3,11 +3,8 @@ import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
 import { meta } from "../../content/site";
-import {
-  certifications,
-  educationHighlights,
-  skillPillars,
-} from "../../content/about";
+import { certifications, educationHighlights } from "../../content/about";
+import PortfolioAssistant from "../../components/PortfolioAssistant";
 import reframeImage from "../../assets/images/reframe.jpg";
 import TechmakersImage from "../../assets/images/Techmakers.jpg";
 import digitalDNAImage from "../../assets/images/digitalDNA.jpg";
@@ -50,23 +47,6 @@ export const About = () => {
             content="Full Stack Software Engineer specialising in React, TypeScript, Python, AI prototypes and cloud engineering."
           />
         </Helmet>
-
-        <section className="skills-showcase sec_sp">
-          <div className="skill-pillar-grid">
-            {skillPillars.map((pillar) => (
-              <article className="skill-pillar-card" key={pillar.title}>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.description}</p>
-
-                <div className="stack-list">
-                  {pillar.stack.map((tech) => (
-                    <span key={tech}>{tech}</span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
 
         <section className="conferences-section sec_sp">
           <div className="section-heading">
@@ -130,6 +110,10 @@ export const About = () => {
               </div>
             </ConferenceCard>
           </div>
+        </section>
+
+        <section id="assistant">
+          <PortfolioAssistant />
         </section>
 
         <section className="education-section sec_sp">

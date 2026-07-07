@@ -27,7 +27,12 @@ export const Socialicons = () => {
 
           return (
             <li key={platform}>
-              <a href={url} aria-label={platform}>
+              <a
+                href={url}
+                aria-label={platform}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <IconComponent />
               </a>
             </li>
