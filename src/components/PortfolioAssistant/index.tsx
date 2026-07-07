@@ -1,4 +1,10 @@
-import React, { useState, type FormEvent } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type KeyboardEvent,
+} from "react";
 import "./style.css";
 
 type ChatMessage = {
@@ -11,6 +17,14 @@ export default function PortfolioAssistant() {
     (import.meta.env.VITE_API_URL as string | undefined)?.trim() ||
     "http://localhost:8000";
   const chatEndpoint = `${apiBaseUrl.replace(/\/$/, "")}/chat`;
+  const chatEndRef = useRef<HTMLDivElement | null>(null);
+
+  const suggestedQuestions = [
+    "What AI projects has Rebecca built?",
+    "Tell me about her React experience",
+    "How has she used Python?",
+    "What full-stack work has she done?",
+  ];
 
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -20,14 +34,16 @@ export default function PortfolioAssistant() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [requestCount, setRequestCount] = useState(0);
 
-  const askAssistant = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
 
-    if (!input.trim()) return;
+  const sendMessage = async (messageText: string) => {
+    const trimmed = messageText.trim();
+    if (!trimmed || loading) return;
 
-    const userMessage: ChatMessage = { role: "user", text: input };
+    const userMessage: ChatMessage = { role: "user", text: trimmed };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
@@ -38,8 +54,13 @@ export default function PortfolioAssistant() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: trimmed }),
       });
+
+      if (!res.ok) {
+        throw new Error("Assistant service is unavailable");
+      }
+
       const data: { reply?: string } = await res.json();
       setMessages((prev) => [
         ...prev,
@@ -53,49 +74,123 @@ export default function PortfolioAssistant() {
         ...prev,
         {
           role: "assistant",
-          text: "Sorry, I can’t reach the AI assistant right now. Please check the backend and try again.",
+          text: "Sorry, I couldn’t reach the assistant just now. Please try again in a moment.",
         },
       ]);
     } finally {
       setLoading(false);
-      setRequestCount((prev) => prev + 1);
+    }
+  };
+
+  const askAssistant = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await sendMessage(input);
+  };
+
+  const handleInputKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      void sendMessage(input);
     }
   };
 
   return (
-    <section className="ai-assistant">
-      <div className="assistant-header">
-        <span>✨ Built by Rebecca</span>
-        <h2>AI Portfolio Assistant</h2>
-        <p>
-          Ask about my React, Python, AI projects, WebSockets, dashboards or
-          full-stack experience.
-        </p>
-      </div>
-
-      <div className="chat-box">
-        {messages.map((msg, index) => (
-          <div key={`${msg.role}-${index}`} className={`message ${msg.role}`}>
-            {msg.text}
+    <section className="aiAssistantSection">
+      <div className="assistantFeatureCard">
+        <div className="assistantHeader">
+          <div className="assistantHeaderContent">
+            <span className="assistantBadge">✨ Built by Rebecca</span>
+            <h2>AI Portfolio Assistant</h2>
+            <p className="assistantLead">
+              Ask about my React, Python, AI, WebSocket, dashboard and
+              full-stack engineering experience.
+            </p>
+            <p className="assistantSecondary">
+              Powered by a FastAPI + Python backend, with a React frontend and
+              Gemini-powered responses.
+            </p>
           </div>
-        ))}
-        {loading && (
-          <div className="message assistant">
-            {requestCount === 0
-              ? "Thinking...\n\ne. 💰 **Cost optimisation level: 100.** The AI is running on a free cloud instance, so if it's been idle it might need a quick coffee break (up to ~50 seconds) before answering."
-              : "Thinking..."}
-          </div>
-        )}
-      </div>
+          <a className="assistantCta" href="#portfolio">
+            <span className="assistantCtaTitle">How I built this</span>
+            <span className="assistantCtaBody">
+              Explore the architecture, backend workflow, prompt design and
+              deployment approach behind this AI feature.
+            </span>
+            <span className="assistantCtaAction">View project breakdown →</span>
+          </a>
+        </div>
 
-      <form className="chat-input" onSubmit={askAssistant}>
-        <input
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
-          placeholder="Ask about Rebecca’s experience..."
-        />
-        <button type="submit">Ask</button>
-      </form>
+        <div className="chatPanel">
+          <div className="messagesViewport" aria-live="polite">
+            {messages.map((msg, index) => (
+              <article
+                key={`${msg.role}-${index}`}
+                className={`messageGroup ${
+                  msg.role === "user" ? "userGroup" : "assistantGroup"
+                }`}
+              >
+                <p className="messageLabel">
+                  {msg.role === "user" ? "You" : "Rebecca’s Assistant"}
+                </p>
+                <div
+                  className={`messageBubble ${
+                    msg.role === "user" ? "userBubble" : "assistantBubble"
+                  }`}
+                >
+                  {msg.role === "assistant" ? (
+                    <span className="assistantBubbleIcon" aria-hidden="true">
+                      ✦
+                    </span>
+                  ) : null}
+                  <p>{msg.text}</p>
+                </div>
+              </article>
+            ))}
+
+            {loading ? (
+              <article className="messageGroup assistantGroup">
+                <p className="messageLabel">Rebecca’s Assistant</p>
+                <div className="messageBubble assistantBubble isThinking">
+                  <span className="assistantBubbleIcon" aria-hidden="true">
+                    ✦
+                  </span>
+                  <p>Thinking...</p>
+                </div>
+              </article>
+            ) : null}
+
+            <div ref={chatEndRef} />
+          </div>
+
+          <div className="suggestionChips" aria-label="Suggested questions">
+            {suggestedQuestions.map((question) => (
+              <button
+                key={question}
+                type="button"
+                className="chipButton"
+                onClick={() => void sendMessage(question)}
+                disabled={loading}
+              >
+                {question}
+              </button>
+            ))}
+          </div>
+
+          <form className="inputBar" onSubmit={askAssistant}>
+            <textarea
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
+              onKeyDown={handleInputKeyDown}
+              placeholder="Ask about Rebecca’s experience..."
+              rows={1}
+              disabled={loading}
+            />
+            <button type="submit" disabled={loading || !input.trim()}>
+              {loading ? "Thinking…" : "Ask AI"}
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
   );
 }
