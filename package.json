@@ -1,14 +1,36 @@
 {
-  "name": "react-portfolio",
+  "name": "rebecca-drennan-portfolio",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "bootstrap": "^5.2.3",
-    "emailjs-com": "^3.2.0",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.7.0",
-    "react-dom": "^18.2.0",
-    "react-helmet-async": "^1.0.7",
+  "description": "Modern, responsive portfolio website with animations and contact form",
+  "author": "Rebecca Drennan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/portfolio-react.git"
+  },
+  "homepage": "https://drennan.dev",
+  "keywords": [
+    "react",
+    "portfolio",
+    "typescript",
+    "vite",
+    "bootstrap"
+  ],
+  "pritypescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.5.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-transition-group": "^4.4.12",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.0
     "react-icons": "^4.1.0",
     "react-router-dom": "^6.6.2",
     "react-transition-group": "^4.4.2",
@@ -30,10 +52,15 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "echo \"No test runner configured for Vite yet\" && exit 0",
-    "predeploy": "yarn build && cp build/index.html build/404.html",
+    "lint": "eslint src --ext ts,tsx",
+    "lint:fix": "eslint src --ext ts,tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json}\"",
+    "type-check": "tsc --noEmit",
+    "predeploy": "npm run build && cp build/index.html build/404.html",
     "deploy": "gh-pages -d build"
   },
   "browserslist": {
