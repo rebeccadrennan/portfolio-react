@@ -1,9 +1,3 @@
-export type AboutSkillPillar = {
-  title: string;
-  description: string;
-  stack: string[];
-};
-
 export type AboutEvent = {
   title: string;
   date: string;
@@ -35,39 +29,6 @@ export type Certification = {
   ctaLabel?: string;
   linkUrl?: string;
 };
-
-export const skillPillars: AboutSkillPillar[] = [
-  {
-    title: "Frontend Engineering",
-    description:
-      "React and TypeScript applications with reusable component libraries, complex state management, interactive dashboards and polished user experiences.",
-    stack: ["React", "TypeScript", "WebSockets", "Data Visualisation"],
-  },
-  {
-    title: "AI & Automation",
-    description:
-      "Conversational AI, document intelligence, OCR pipelines, multi-agent workflows and workflow automation using Python and modern AI tooling.",
-    stack: ["Python", "LLMs", "LangGraph", "OCR", "Automation"],
-  },
-  {
-    title: "Backend & APIs",
-    description:
-      "Scalable backend services, REST APIs, asynchronous processing and full-stack integrations designed for resilient, real-time products.",
-    stack: [
-      "REST APIs",
-      "Async Processing",
-      "Python Services",
-      "SQL",
-      "Integrations",
-    ],
-  },
-  {
-    title: "Cloud & Delivery",
-    description:
-      "Engineering foundations including Docker, CI/CD pipelines, GitHub Actions, Azure, AWS, Terraform, secure configuration and reusable project templates.",
-    stack: ["Azure", "AWS", "Docker", "Terraform", "GitHub Actions"],
-  },
-];
 
 export const hackathons: AboutEvent[] = [
   {
@@ -144,12 +105,6 @@ export const educationHighlights: EducationHighlight[] = [
     ctaLabel: "View Dissertation",
     linkUrl:
       "https://drive.google.com/file/d/1DxFlixZ4t9lkeX-IR0aUalk2ANK3XwPe/view",
-  },
-  {
-    title: "A*A*A",
-    year: "2020",
-    institution: "Rainey Endowed School",
-    description: "Digital Technology, Business, Maths",
   },
 ];
 
