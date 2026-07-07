@@ -10,7 +10,7 @@ describe('Headermain', () => {
     document.documentElement.removeAttribute('data-theme');
   });
 
-  it('toggles the menu open state and body overflow lock', () => {
+  it('renders without the menu controls', () => {
     const container = document.createElement('div');
     const root = ReactDOM.createRoot(container);
 
@@ -22,28 +22,8 @@ describe('Headermain', () => {
       );
     });
 
-    const menu = container.querySelector('.site__navigation');
-    const menuButton = container.querySelector('.menu__button') as HTMLButtonElement | null;
-
-    expect(menu?.classList.contains('menu__opend')).toBe(true);
-    expect(document.body.classList.contains('ovhidden')).toBe(false);
-
-    if (!menuButton) {
-      throw new Error('Menu button not found');
-    }
-
-    React.act(() => {
-      menuButton.click();
-    });
-
-    expect(menu?.classList.contains('menu__opend')).toBe(false);
-    expect(document.body.classList.contains('ovhidden')).toBe(true);
-
-    React.act(() => {
-      menuButton.click();
-    });
-
-    expect(menu?.classList.contains('menu__opend')).toBe(true);
+    expect(container.querySelector('.site__navigation')).toBeNull();
+    expect(container.querySelector('.menu__button')).toBeNull();
     expect(document.body.classList.contains('ovhidden')).toBe(false);
 
     React.act(() => {

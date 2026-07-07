@@ -85,10 +85,6 @@ p {
   line-height: 1.7;
 }
 
-.ovhidden {
-  overflow: hidden;
-}
-
 .text_2,
 .text_2:hover {
   color: var(--text-color-2);
