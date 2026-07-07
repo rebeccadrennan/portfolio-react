@@ -29,11 +29,8 @@
   width: min(1080px, 100%);
   padding: clamp(1rem, 2.2vw, 2rem);
   border-radius: var(--assistant-radius);
-  border: 1px solid var(--assistant-border);
   background: var(--assistant-bg);
-  box-shadow:
-    var(--assistant-shadow),
-    0 0 0 1px rgba(113, 91, 255, 0.16) inset;
+  box-shadow: var(--assistant-shadow);
   color: var(--assistant-text);
 }
 
@@ -341,6 +338,25 @@
   .messageBubble {
     max-width: 96%;
     font-size: 0.92rem;
+  }
+
+  .suggestionChips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .suggestionChips .chipButton:nth-child(n + 3) {
+    display: none;
+  }
+
+  .chipButton {
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    line-height: 1.25;
+    white-space: normal;
+    min-height: 2.35rem;
   }
 
   .inputBar {

@@ -3,7 +3,6 @@ import { Home } from "../pages/home";
 import { Portfolio } from "../pages/portfolio";
 import { Socialicons } from "../components/socialicons";
 import { HackathonsSection } from "../components/HackathonsSection";
-import PortfolioAssistant from "../components/PortfolioAssistant";
 
 const About = React.lazy(() =>
   import("../pages/about").then((module) => ({ default: module.About })),
@@ -20,10 +19,6 @@ function AppRoutes() {
       <div className="scroll-container">
         <section id="home">
           <Home />
-        </section>
-
-        <section id="assistant">
-          <PortfolioAssistant />
         </section>
 
         <section id="about">
