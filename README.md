@@ -7,6 +7,9 @@
 [![Vite](https://img.shields.io/badge/Vite-7.0-646cff?logo=vite&logoColor=white&style=flat-square)](https://vitejs.dev/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2-7952b3?logo=bootstrap&logoColor=white&style=flat-square)](https://getbootstrap.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![CI/CD](https://github.com/yourusername/portfolio-react/actions/workflows/ci.yml/badge.svg?style=flat-square)](https://github.com/yourusername/portfolio-react/actions)
+[![Code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
+[![Linting: ESLint](https://img.shields.io/badge/linting-eslint-4B32C3?style=flat-square)](https://eslint.org/)
 
 ## 👀 Preview
 
@@ -154,7 +157,11 @@ This portfolio is built with accessibility in mind:
 ## 📚 Documentation
 
 - [Development Guide](DEVELOPMENT.md) - Local development setup and guidelines
+- [Architecture Guide](ARCHITECTURE.md) - Project structure and design decisions
 - [Contributing Guide](CONTRIBUTING.md) - How to contribute to this project
+- [Deployment Guide](DEPLOYMENT.md) - Deploy to various platforms
+- [Configuration Reference](CONFIG.md) - All configuration options
+- [Roadmap](ROADMAP.md) - Planned features and improvements
 - [Changelog](CHANGELOG.md) - Version history and updates
 
 ## 📄 License
