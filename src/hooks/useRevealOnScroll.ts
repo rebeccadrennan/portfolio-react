@@ -29,7 +29,7 @@ const useRevealOnScroll = () => {
       },
       {
         threshold: 0.2,
-      },
+      }
     );
 
     // Attach observers to initial elements on mount.
@@ -62,8 +62,7 @@ const useRevealOnScroll = () => {
     window.requestAnimationFrame(() => {
       document.querySelectorAll(revealSelector).forEach((el) => {
         const rect = el.getBoundingClientRect();
-        const viewportHeight =
-          window.innerHeight || document.documentElement.clientHeight;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
         if (rect.top < viewportHeight * 0.95) {
           revealNow(el);
           observer.unobserve(el);
