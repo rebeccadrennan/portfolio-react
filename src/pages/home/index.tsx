@@ -20,7 +20,7 @@ export const Home = () => {
 
   return (
     <HelmetProvider>
-      <section id="home" className="home">
+      <section id="home-introduction" className="home">
         <Helmet>
           <meta charSet="utf-8" />
           <title>{meta.title}</title>
@@ -65,7 +65,7 @@ export const Home = () => {
                 </h1>
                 <p className="mb-1x">{introdata.description}</p>
                 <div className="intro_btn-action pb-5">
-                  <a href="#contact">
+                  <a href="#contact-details">
                     <div id="button_h" className="ac_btn btn">
                       Contact Me
                       <span className="ring one"></span>

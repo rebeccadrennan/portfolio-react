@@ -112,19 +112,19 @@
   z-index: 1;
 }
 
-.scroll-container > section:not(#footer-section) {
+.scroll-container > section:not(#site-footer) {
   width: 100%;
   padding-left: clamp(16px, 10vw, 160px);
   padding-right: clamp(16px, 5vw, 80px);
   overflow-x: hidden;
 }
 
-.scroll-container > section:not(#footer-section) .container,
-.scroll-container > section:not(#footer-section) .container-sm,
-.scroll-container > section:not(#footer-section) .container-md,
-.scroll-container > section:not(#footer-section) .container-lg,
-.scroll-container > section:not(#footer-section) .container-xl,
-.scroll-container > section:not(#footer-section) .container-xxl {
+.scroll-container > section:not(#site-footer) .container,
+.scroll-container > section:not(#site-footer) .container-sm,
+.scroll-container > section:not(#site-footer) .container-md,
+.scroll-container > section:not(#site-footer) .container-lg,
+.scroll-container > section:not(#site-footer) .container-xl,
+.scroll-container > section:not(#site-footer) .container-xxl {
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
@@ -133,7 +133,7 @@
 }
 
 @media (max-width: 991.98px) {
-  .scroll-container > section:not(#footer-section) {
+  .scroll-container > section:not(#site-footer) {
     padding-left: 16px;
     padding-right: 16px;
   }

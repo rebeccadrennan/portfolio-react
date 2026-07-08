@@ -17,31 +17,31 @@ function AppRoutes() {
   return (
     <div className="s_c">
       <div className="scroll-container">
-        <section id="home">
+        <section id="landing-hero">
           <Home />
         </section>
 
-        <section id="about">
+        <section id="about-highlights">
           <Suspense fallback={sectionFallback}>
             <About />
           </Suspense>
         </section>
 
-        <section id="portfolio">
+        <section id="featured-projects">
           <Portfolio />
         </section>
 
-        <section id="hackathons">
+        <section id="hackathon-highlights">
           <HackathonsSection />
         </section>
 
-        <section id="contact">
+        <section id="contact-details">
           <Suspense fallback={sectionFallback}>
             <ContactUs />
           </Suspense>
         </section>
 
-        <section id="footer-section" className="footer-section">
+        <section id="site-footer" className="footer-section">
           <footer className="site-footer">
             <div className="footer-inner">
               <p>

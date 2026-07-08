@@ -48,7 +48,7 @@ export const About = () => {
           />
         </Helmet>
 
-        <section className="conferences-section sec_sp">
+        <section id="conference-networking" className="conferences-section sec_sp">
           <div className="section-heading">
             <p className="about-eyebrow">Conferences & Networking</p>
           </div>
@@ -112,11 +112,11 @@ export const About = () => {
           </div>
         </section>
 
-        <section id="assistant">
+        <section id="ai-portfolio-assistant">
           <PortfolioAssistant />
         </section>
 
-        <section className="education-section sec_sp">
+        <section id="education-highlights" className="education-section sec_sp">
           <div className="section-heading">
             <p className="about-eyebrow">Education</p>
           </div>
@@ -172,7 +172,7 @@ export const About = () => {
           </div>
         </section>
 
-        <section className="cert-preview sec_sp">
+        <section id="certifications-awards" className="cert-preview sec_sp">
           <Row>
             <div className="section-heading">
               <p className="about-eyebrow">Certifications & Awards</p>

@@ -104,14 +104,14 @@ export default function PortfolioAssistant() {
   };
 
   return (
-    <section className="aiAssistantSection">
+    <section id="assistant-chat" className="aiAssistantSection">
       <div className="assistantFeatureCard">
         <div className="assistantHeader">
           <div className="assistantHeaderContent">
             <span className="assistantBadge">✨ Built by Rebecca</span>
             <h2>AI Portfolio Assistant</h2>
           </div>
-          <a className="assistantCta" href="#portfolio">
+          <a className="assistantCta" href="#featured-projects">
             <span className="assistantCtaTitle">
               Interested in how I built this?
             </span>
