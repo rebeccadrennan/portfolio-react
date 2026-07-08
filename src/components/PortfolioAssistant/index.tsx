@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  type FormEvent,
-  type KeyboardEvent,
-} from "react";
+import React, { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import "./style.css";
 
 type ChatMessage = {
@@ -14,8 +8,7 @@ type ChatMessage = {
 
 export default function PortfolioAssistant() {
   const apiBaseUrl =
-    (import.meta.env.VITE_API_URL as string | undefined)?.trim() ||
-    "http://localhost:8000";
+    (import.meta.env.VITE_API_URL as string | undefined)?.trim() || "http://localhost:8000";
   const chatEndpoint = `${apiBaseUrl.replace(/\/$/, "")}/chat`;
   const messagesViewportRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,7 +28,7 @@ export default function PortfolioAssistant() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const hasPriorAssistantReply = messages.some(
-    (message, index) => message.role === "assistant" && index > 0,
+    (message, index) => message.role === "assistant" && index > 0
   );
 
   useEffect(() => {
@@ -104,37 +97,29 @@ export default function PortfolioAssistant() {
   };
 
   return (
-    <section className="aiAssistantSection">
+    <section id="assistant-chat" className="aiAssistantSection">
       <div className="assistantFeatureCard">
         <div className="assistantHeader">
           <div className="assistantHeaderContent">
             <span className="assistantBadge">✨ Built by Rebecca</span>
             <h2>AI Portfolio Assistant</h2>
           </div>
-          <a className="assistantCta" href="#portfolio">
-            <span className="assistantCtaTitle">
-              Interested in how I built this?
-            </span>
+          <a className="assistantCta" href="#featured-projects">
+            <span className="assistantCtaTitle">Interested in how I built this?</span>
             <span className="assistantCtaBody">
-              Explore the architecture, backend workflow, prompt design and
-              deployment approach behind this AI feature.
+              Explore the architecture, backend workflow, prompt design and deployment approach
+              behind this AI feature.
             </span>
             <span className="assistantCtaAction">View Project →</span>
           </a>
         </div>
 
         <div className="chatPanel">
-          <div
-            className="messagesViewport"
-            aria-live="polite"
-            ref={messagesViewportRef}
-          >
+          <div className="messagesViewport" aria-live="polite" ref={messagesViewportRef}>
             {messages.map((msg, index) => (
               <article
                 key={`${msg.role}-${index}`}
-                className={`messageGroup ${
-                  msg.role === "user" ? "userGroup" : "assistantGroup"
-                }`}
+                className={`messageGroup ${msg.role === "user" ? "userGroup" : "assistantGroup"}`}
               >
                 <p className="messageLabel">
                   {msg.role === "user" ? "You" : "Rebecca’s Assistant"}
@@ -166,10 +151,9 @@ export default function PortfolioAssistant() {
                       <strong>Thinking...</strong>
                     ) : (
                       <>
-                        <strong>Thinking...</strong> Rebecca knows how to scale
-                        cloud infrastructure. She also knows how to avoid paying
-                        for it. First reply may take up to{" "}
-                        <strong>30 seconds</strong>. 😄
+                        <strong>Thinking...</strong> Rebecca knows how to scale cloud
+                        infrastructure. She also knows how to avoid paying for it. First reply may
+                        take up to <strong>30 seconds</strong>. 😄
                       </>
                     )}
                   </p>

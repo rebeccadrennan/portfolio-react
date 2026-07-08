@@ -86,8 +86,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Python",
-    description:
-      "Strong background in scripting, automation, and backend APIs.",
+    description: "Strong background in scripting, automation, and backend APIs.",
     exams: ["PCEP™"],
     years: 1,
   },
@@ -109,10 +108,7 @@ export const skills: Skill[] = [
     name: "Cloud Platforms",
     description:
       "Experience with cloud infrastructure and deployment, including AWS, Azure, and Google Cloud. Hands-on experience hosting web applications and leveraging cloud services effectively.",
-    exams: [
-      "AWS Certified Cloud Practitioner",
-      "Microsoft Certified: Azure Fundamentals",
-    ],
+    exams: ["AWS Certified Cloud Practitioner", "Microsoft Certified: Azure Fundamentals"],
     years: 4,
   },
   {
@@ -151,8 +147,7 @@ export const linkedindata = {
       location: "Remote",
       startDate: "2021",
       endDate: "2022",
-      description:
-        "Built proof-of-concepts and maintained full-stack applications.",
+      description: "Built proof-of-concepts and maintained full-stack applications.",
     },
   ],
   education: [
