@@ -14,9 +14,9 @@ export const HackathonsSection = () => {
             </p>
           </div>
           <p>
-            I love hackathons because they combine everything I enjoy: fast
-            problem solving, user-focused design, technical creativity and
-            pitching new ideas with talented people from different backgrounds.
+            I love hackathons because they combine everything I enjoy: fast problem solving,
+            user-focused design, technical creativity and pitching new ideas with talented people
+            from different backgrounds.
           </p>
         </div>
 

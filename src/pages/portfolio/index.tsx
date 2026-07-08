@@ -19,9 +19,9 @@ export const Portfolio = () => {
             <p className="about-eyebrow">Featured Projects</p>
           </div>
           <p className="portfolio-lead mb-3">
-            Public work demonstrating my approach to software engineering, AI
-            integration and product development. Most commercial work cannot be
-            shared publicly due to client confidentiality.
+            Public work demonstrating my approach to software engineering, AI integration and
+            product development. Most commercial work cannot be shared publicly due to client
+            confidentiality.
           </p>
 
           <div className="portfolio-grid mb-5">
@@ -32,8 +32,7 @@ export const Portfolio = () => {
                 !data.liveUrl.startsWith("#");
               const hasInternalLink =
                 typeof data.liveUrl === "string" && data.liveUrl.startsWith("#");
-              const hasRepoLink =
-                typeof data.repoUrl === "string" && data.repoUrl.length > 0;
+              const hasRepoLink = typeof data.repoUrl === "string" && data.repoUrl.length > 0;
               const externalLabel =
                 hasExternalLink && data.liveUrl?.includes("github.com")
                   ? "View GitHub Repo"
@@ -76,9 +75,7 @@ export const Portfolio = () => {
                           {externalLabel}
                         </a>
                       ) : null}
-                      {hasInternalLink ? (
-                        <a href={data.liveUrl}>View Frontend Section</a>
-                      ) : null}
+                      {hasInternalLink ? <a href={data.liveUrl}>View Frontend Section</a> : null}
                       {hasRepoLink ? (
                         <a href={data.repoUrl} target="_blank" rel="noreferrer">
                           View GitHub Repo

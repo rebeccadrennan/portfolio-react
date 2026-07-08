@@ -17,12 +17,7 @@ type ConferenceCardProps = {
   children?: ReactNode;
 };
 
-const ConferenceCard = ({
-  title,
-  years,
-  description,
-  children,
-}: ConferenceCardProps) => {
+const ConferenceCard = ({ title, years, description, children }: ConferenceCardProps) => {
   return (
     <article className="conference-card">
       <div className="conference-card-header">
@@ -60,11 +55,7 @@ export const About = () => {
               description="Talks on AI, cloud engineering, developer tooling and networking with engineers across Northern Ireland."
             >
               <div className="linkedin-embed">
-                <img
-                  src={TechmakersImage}
-                  alt="Women Techmakers Belfast"
-                  loading="lazy"
-                />
+                <img src={TechmakersImage} alt="Women Techmakers Belfast" loading="lazy" />
               </div>
             </ConferenceCard>
 
@@ -74,11 +65,7 @@ export const About = () => {
               description="Exploring leadership, software engineering careers and emerging technologies."
             >
               <div className="linkedin-embed">
-                <img
-                  src={womenInTechImage}
-                  alt="Women in Tech Annual Conference"
-                  loading="lazy"
-                />
+                <img src={womenInTechImage} alt="Women in Tech Annual Conference" loading="lazy" />
               </div>
             </ConferenceCard>
 
@@ -88,11 +75,7 @@ export const About = () => {
               description="Learning from industry leaders and connecting with software engineers from across the UK."
             >
               <div className="linkedin-embed">
-                <img
-                  src={reframeImage}
-                  alt="Reframe Women in Tech"
-                  loading="lazy"
-                />
+                <img src={reframeImage} alt="Reframe Women in Tech" loading="lazy" />
               </div>
             </ConferenceCard>
 
@@ -102,11 +85,7 @@ export const About = () => {
               description="Northern Ireland's largest technology conference covering AI, startups and software engineering."
             >
               <div className="linkedin-embed">
-                <img
-                  src={digitalDNAImage}
-                  alt="Digital DNA Belfast"
-                  loading="lazy"
-                />
+                <img src={digitalDNAImage} alt="Digital DNA Belfast" loading="lazy" />
               </div>
             </ConferenceCard>
           </div>
@@ -128,9 +107,7 @@ export const About = () => {
               const cardBody = (
                 <>
                   <div className="education-card-top">
-                    <span className="education-institution">
-                      {item.institution}
-                    </span>
+                    <span className="education-institution">{item.institution}</span>
                     <span className="education-year">{item.year}</span>
                   </div>
 
@@ -180,10 +157,7 @@ export const About = () => {
 
             <div className="certification-grid">
               {certifications.map((cert) => (
-                <div
-                  className={`certification-card ${cert.colour}`}
-                  key={cert.title}
-                >
+                <div className={`certification-card ${cert.colour}`} key={cert.title}>
                   <div className="cert-top">
                     <div className="cert-icon">{cert.icon}</div>
 
@@ -194,18 +168,12 @@ export const About = () => {
 
                   <p className="issuer">{cert.issuer}</p>
 
-                  {cert.description && (
-                    <p className="cert-description">{cert.description}</p>
-                  )}
+                  {cert.description && <p className="cert-description">{cert.description}</p>}
 
-                  {cert.category && (
-                    <span className="category">{cert.category}</span>
-                  )}
+                  {cert.category && <span className="category">{cert.category}</span>}
 
                   {cert.badgeLabel && (
-                    <span className="category category-outline">
-                      {cert.badgeLabel}
-                    </span>
+                    <span className="category category-outline">{cert.badgeLabel}</span>
                   )}
 
                   {cert.linkUrl && cert.ctaLabel && (
