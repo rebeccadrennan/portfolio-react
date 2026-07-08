@@ -7,22 +7,13 @@ type RouterInjectedProps = {
   params: ReturnType<typeof useParams>;
 };
 
-function withRouter<P extends RouterInjectedProps>(
-  Component: React.ComponentType<P>,
-) {
+function withRouter<P extends RouterInjectedProps>(Component: React.ComponentType<P>) {
   function ComponentWithRouterProp(props: Omit<P, keyof RouterInjectedProps>) {
     const location = useLocation();
     const navigate = useNavigate();
     const params = useParams();
 
-    return (
-      <Component
-        {...(props as P)}
-        location={location}
-        params={params}
-        navigate={navigate}
-      />
-    );
+    return <Component {...(props as P)} location={location} params={params} navigate={navigate} />;
   }
 
   return ComponentWithRouterProp;

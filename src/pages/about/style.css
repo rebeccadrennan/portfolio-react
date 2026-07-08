@@ -287,11 +287,7 @@
 .conference-card {
   padding: 28px;
   border-radius: 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.03)
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
@@ -367,11 +363,7 @@
   height: 100%;
   padding: 28px;
   border-radius: 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.03)
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
   transition:
@@ -565,11 +557,7 @@
   height: 100%;
   padding: 36px;
   border-radius: 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.03)
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
@@ -745,11 +733,7 @@
 .skill-pillar-card {
   padding: 36px;
   border-radius: 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(148, 212, 196, 0.08),
-    rgba(20, 15, 60, 0.12)
-  );
+  background: linear-gradient(180deg, rgba(148, 212, 196, 0.08), rgba(20, 15, 60, 0.12));
   border: 1px solid rgba(148, 212, 196, 0.18);
   backdrop-filter: blur(18px);
   transition: all 0.35s;
@@ -758,11 +742,7 @@
 .skill-pillar-card:hover {
   transform: translateY(-8px);
   border-color: rgba(148, 212, 196, 0.35);
-  background: linear-gradient(
-    180deg,
-    rgba(148, 212, 196, 0.12),
-    rgba(20, 15, 60, 0.18)
-  );
+  background: linear-gradient(180deg, rgba(148, 212, 196, 0.12), rgba(20, 15, 60, 0.18));
   box-shadow: 0 20px 60px rgba(148, 212, 196, 0.12);
 }
 
