@@ -5,10 +5,10 @@ import { Socialicons } from "../components/socialicons";
 import { HackathonsSection } from "../components/HackathonsSection";
 
 const About = React.lazy(() =>
-  import("../pages/about").then((module) => ({ default: module.About })),
+  import("../pages/about").then((module) => ({ default: module.About }))
 );
 const ContactUs = React.lazy(() =>
-  import("../pages/contact").then((module) => ({ default: module.ContactUs })),
+  import("../pages/contact").then((module) => ({ default: module.ContactUs }))
 );
 
 const sectionFallback = null;
@@ -45,11 +45,9 @@ function AppRoutes() {
           <footer className="site-footer">
             <div className="footer-inner">
               <p>
-                &copy; {new Date().getFullYear()} Rebecca Drennan. All rights
-                reserved.
+                &copy; {new Date().getFullYear()} Rebecca Drennan. All rights reserved.
                 <br />
-                You reached the end... but hopefully not the end of our
-                conversation!
+                You reached the end... but hopefully not the end of our conversation!
               </p>
             </div>
           </footer>

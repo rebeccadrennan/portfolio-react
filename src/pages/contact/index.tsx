@@ -26,9 +26,7 @@ export const ContactUs = () => {
               <h3 className="color_sec py-4">Get in touch</h3>
               <address>
                 <strong>Email:</strong>{" "}
-                <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>
-                  {contactConfig.YOUR_EMAIL}
-                </a>
+                <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>{contactConfig.YOUR_EMAIL}</a>
                 <br />
                 <br />
                 {"YOUR_FONE" in contactConfig ? (
