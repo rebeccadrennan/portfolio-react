@@ -38,13 +38,7 @@ export const hackathons: AboutEvent[] = [
     description:
       "Developed CovidCare, a digital remote patient-monitoring concept for frontline healthcare workers. Collaborated remotely with engineers across the UK to rapidly prototype a healthcare technology solution.",
 
-    skills: [
-      "Mobile App",
-      "Product Design",
-      "COVID-19",
-      "Pitching",
-      "Teamwork",
-    ],
+    skills: ["Mobile App", "Product Design", "COVID-19", "Pitching", "Teamwork"],
     ctaLabel: "View Pitch",
     linkUrl:
       "https://docs.google.com/presentation/d/1AEtKuR0gml034tLSEvinJWR1MPdUNq9DGxE66miEeSM/edit?slide=id.g72b44a6fb6_1_0#slide=id.g72b44a6fb6_1_0",
@@ -55,12 +49,7 @@ export const hackathons: AboutEvent[] = [
     project: "CovidCare",
     description:
       "Designed and pitched CovidCare, a community-focused mobile app concept created during COVID-19 to help people stay connected. Worked in a cross-functional team across product design, prototyping and pitching.",
-    skills: [
-      "Healthcare Tech",
-      "Remote Monitoring",
-      "Rapid Prototype",
-      "Collaboration",
-    ],
+    skills: ["Healthcare Tech", "Remote Monitoring", "Rapid Prototype", "Collaboration"],
     ctaLabel: "View Pitch",
     linkUrl:
       "https://docs.google.com/presentation/d/11frJHdswiXw-bfcagJTd2thd0owkcj9vofnQpVD0UUQ/edit?slide=id.gab36fa5d25_0_0#slide=id.gab36fa5d25_0_0",
@@ -103,8 +92,7 @@ export const educationHighlights: EducationHighlight[] = [
     description:
       "Queen's University Belfast. Selected Specialisation: Video Analytics and Machine Learning. Dissertation: Developed Binder, an offline-first knowledge management platform enabling NGOs to deliver training materials in low-connectivity environments using a modular wiki-style architecture.",
     ctaLabel: "View Dissertation",
-    linkUrl:
-      "https://drive.google.com/file/d/1DxFlixZ4t9lkeX-IR0aUalk2ANK3XwPe/view",
+    linkUrl: "https://drive.google.com/file/d/1DxFlixZ4t9lkeX-IR0aUalk2ANK3XwPe/view",
   },
 ];
 
@@ -134,8 +122,7 @@ export const certifications: Certification[] = [
     icon: "🥇",
     colour: "gold",
     ctaLabel: "View Report",
-    linkUrl:
-      "https://drive.google.com/file/d/1j__SZS3WnVGvi3ePXLDs3GIstBrw8l7j/view",
+    linkUrl: "https://drive.google.com/file/d/1j__SZS3WnVGvi3ePXLDs3GIstBrw8l7j/view",
   },
   {
     title: "Microsoft Certified: Azure AI Fundamentals (AI-900)",

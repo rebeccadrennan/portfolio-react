@@ -1,10 +1,5 @@
 :root {
-  --assistant-bg: linear-gradient(
-    160deg,
-    #12052f 0%,
-    #0b0423 60%,
-    #09021d 100%
-  );
+  --assistant-bg: linear-gradient(160deg, #12052f 0%, #0b0423 60%, #09021d 100%);
   --assistant-border: rgba(145, 129, 255, 0.35);
   --assistant-shadow: 0 18px 45px rgba(14, 8, 40, 0.55);
   --assistant-radius: 20px;
@@ -86,11 +81,7 @@
   gap: 0.38rem;
   text-decoration: none;
   color: inherit;
-  background: linear-gradient(
-    145deg,
-    rgba(36, 20, 85, 0.78),
-    rgba(20, 10, 52, 0.75)
-  );
+  background: linear-gradient(145deg, rgba(36, 20, 85, 0.78), rgba(20, 10, 52, 0.75));
   border: 1px solid rgba(150, 132, 255, 0.46);
   border-radius: var(--assistant-radius-sm);
   padding: 0.82rem 0.92rem;
@@ -105,11 +96,7 @@
 .assistantCta:hover {
   transform: translateY(-1px);
   border-color: rgba(174, 161, 255, 0.66);
-  background: linear-gradient(
-    145deg,
-    rgba(42, 23, 102, 0.88),
-    rgba(27, 14, 65, 0.85)
-  );
+  background: linear-gradient(145deg, rgba(42, 23, 102, 0.88), rgba(27, 14, 65, 0.85));
 }
 
 .assistantCta:focus-visible,

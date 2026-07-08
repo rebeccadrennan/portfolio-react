@@ -18,7 +18,7 @@ describe("Headermain", () => {
       root.render(
         <MemoryRouter>
           <Headermain />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
     });
 
@@ -39,7 +39,7 @@ describe("Headermain", () => {
       root.render(
         <MemoryRouter>
           <Headermain />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
     });
 
@@ -47,7 +47,7 @@ describe("Headermain", () => {
     expect(localStorage.getItem("theme")).toBe("dark");
 
     const themeButton = container.querySelector(
-      '[aria-label="Toggle theme"]',
+      '[aria-label="Toggle theme"]'
     ) as HTMLButtonElement | null;
 
     if (!themeButton) {
