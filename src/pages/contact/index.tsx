@@ -1,7 +1,7 @@
 import React, { useState, type FormEvent, type ChangeEvent } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { meta, socialprofils } from "../../content/site";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import { FaLinkedin } from "react-icons/fa";
 import { contactConfig } from "../../content/contact";
 import { submitContactForm, type ContactApiError } from "../../services/contact";
