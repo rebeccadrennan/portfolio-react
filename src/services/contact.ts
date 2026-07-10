@@ -1,5 +1,4 @@
-const API_URL =
-  import.meta.env["VITE_CONTACT_API_URL"] ?? "http://localhost:3000";
+const API_URL = import.meta.env["VITE_CONTACT_API_URL"] ?? "http://localhost:3000";
 
 export type ContactPayload = {
   name: string;
@@ -19,9 +18,7 @@ export type ContactApiResponse = {
   errors?: ContactApiError[];
 };
 
-export async function submitContactForm(
-  data: ContactPayload,
-): Promise<ContactApiResponse> {
+export async function submitContactForm(data: ContactPayload): Promise<ContactApiResponse> {
   const res = await fetch(`${API_URL}/api/contact`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
