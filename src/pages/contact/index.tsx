@@ -1,36 +1,23 @@
 import React, { useState, type FormEvent, type ChangeEvent } from "react";
-import * as emailjs from "emailjs-com";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { meta } from "../../content/site";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content/contact";
+import {
+  submitContactForm,
+  type ContactApiError,
+} from "../../services/contact";
 
 type ContactFormState = {
   email: string;
   name: string;
   subject: string;
   message: string;
+  errors: ContactApiError[];
   loading: boolean;
   show: boolean;
   alertmessage: string;
   variant: "success" | "danger" | "";
-};
-
-type EmailJsLikeError = {
-  status?: number;
-  text?: string;
-  message?: string;
-};
-
-const getEmailErrorDetails = (error: unknown) => {
-  const emailError = error as EmailJsLikeError | undefined;
-  const status = emailError?.status;
-  const text = emailError?.text;
-  const message =
-    text ||
-    emailError?.message ||
-    (error instanceof Error ? error.message : "Unknown error");
-  return { status, message };
 };
 
 export const ContactUs = () => {
@@ -39,6 +26,7 @@ export const ContactUs = () => {
     name: "",
     subject: "",
     message: "",
+    errors: [],
     loading: false,
     show: false,
     alertmessage: "",
@@ -47,99 +35,68 @@ export const ContactUs = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setFormdata((prev) => ({ ...prev, loading: true, show: false }));
+    setFormdata((prev) => ({
+      ...prev,
+      loading: true,
+      show: false,
+      errors: [],
+    }));
 
     const senderName = formData.name.trim();
     const senderEmail = formData.email.trim().toLowerCase();
     const subject = formData.subject.trim();
     const message = formData.message.trim();
-    const recipientEmail = contactConfig.YOUR_EMAIL.trim().toLowerCase();
-
-    if (
-      !contactConfig.YOUR_SERVICE_ID ||
-      !contactConfig.YOUR_TEMPLATE_ID ||
-      !contactConfig.YOUR_USER_ID
-    ) {
-      const encodedSubject = encodeURIComponent(subject || "Portfolio Contact");
-      const encodedBody = encodeURIComponent(
-        `Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`,
-      );
-
-      window.location.href = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}`;
-
-      setFormdata((prev) => ({
-        ...prev,
-        loading: false,
-        alertmessage: "Opening your email app to send this message.",
-        variant: "success",
-        show: true,
-      }));
-      return;
-    }
-
-    const templateParams = {
-      from_name: senderName,
-      from_email: senderEmail,
-      user_name: senderName,
-      user_email: senderEmail,
-      reply_to: senderEmail,
-      subject,
-      to_name: "Rebecca Drennan",
-      to_email: recipientEmail,
-      message,
-    };
 
     try {
-      const result = await emailjs.send(
-        contactConfig.YOUR_SERVICE_ID,
-        contactConfig.YOUR_TEMPLATE_ID,
-        templateParams,
-        contactConfig.YOUR_USER_ID,
-      );
-
-      console.log(result.text);
-      setFormdata((prev) => ({
-        ...prev,
-        loading: false,
-        alertmessage: "SUCCESS! Thank you for your message",
-        variant: "success",
-        show: true,
-      }));
-    } catch (error: unknown) {
-      const { status, message } = getEmailErrorDetails(error);
-      const statusLabel = typeof status === "number" ? ` (${status})` : "";
-      console.error("EmailJS send failed", {
-        status,
+      const response = await submitContactForm({
+        name: senderName,
+        email: senderEmail,
+        subject,
         message,
-        origin: window.location.origin,
       });
 
-      const helpText =
-        status === 412
-          ? " Check EmailJS settings for public key, service/template IDs, and allowed origins."
-          : status === 422
-            ? " Check the EmailJS template 'To email' field and map it to {{to_email}} or a valid fixed address."
-            : "";
-
-      if (status === 422) {
-        const fallbackSubject = encodeURIComponent(
-          subject || "Portfolio Contact",
-        );
-        const fallbackBody = encodeURIComponent(
-          `Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`,
-        );
-        window.location.href = `mailto:${recipientEmail}?subject=${fallbackSubject}&body=${fallbackBody}`;
+      if (response.success) {
+        setFormdata((prev) => ({
+          ...prev,
+          email: "",
+          name: "",
+          subject: "",
+          message: "",
+          errors: [],
+          loading: false,
+          alertmessage:
+            response.message || "SUCCESS! Thank you for your message",
+          variant: "success",
+          show: true,
+        }));
+        return;
       }
 
       setFormdata((prev) => ({
         ...prev,
         loading: false,
-        alertmessage:
-          status === 422
-            ? "Email service rejected the recipient address. Opening your email app as a fallback."
-            : `Failed to send${statusLabel}! ${message}.${helpText}`,
+        alertmessage: response.message || "Failed to send message.",
         variant: "danger",
         show: true,
+        errors: response.errors || [],
+      }));
+
+      document
+        .querySelector(".co_alert")
+        ?.scrollIntoView({ behavior: "smooth" });
+    } catch (error: unknown) {
+      const messageText =
+        error instanceof Error
+          ? error.message
+          : "Unable to submit the form right now. Please try again.";
+
+      setFormdata((prev) => ({
+        ...prev,
+        loading: false,
+        alertmessage: messageText,
+        variant: "danger",
+        show: true,
+        errors: [],
       }));
       document
         .querySelector(".co_alert")
@@ -150,11 +107,16 @@ export const ContactUs = () => {
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
+    const fieldName = event.target.name;
     setFormdata((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [fieldName]: event.target.value,
+      errors: prev.errors.filter((error) => error.field !== fieldName),
     }));
   };
+
+  const getFieldError = (field: string) =>
+    formData.errors.find((error) => error.field === field)?.message;
 
   return (
     <HelmetProvider>
@@ -201,11 +163,16 @@ export const ContactUs = () => {
           <Col lg="7" className="d-flex align-items-center">
             <form
               id="contact-form"
-              className="php-email-form"
+              className="php-email-form contact__form"
               onSubmit={handleSubmit}
             >
               <div className="row gy-4">
                 <div className="col-md-6">
+                  {getFieldError("name") ? (
+                    <small className="text-danger d-block mb-2">
+                      {getFieldError("name")}
+                    </small>
+                  ) : null}
                   <input
                     type="text"
                     name="name"
@@ -217,6 +184,11 @@ export const ContactUs = () => {
                   />
                 </div>
                 <div className="col-md-6">
+                  {getFieldError("email") ? (
+                    <small className="text-danger d-block mb-2">
+                      {getFieldError("email")}
+                    </small>
+                  ) : null}
                   <input
                     type="email"
                     name="email"
@@ -228,6 +200,11 @@ export const ContactUs = () => {
                   />
                 </div>
                 <div className="col-md-12">
+                  {getFieldError("subject") ? (
+                    <small className="text-danger d-block mb-2">
+                      {getFieldError("subject")}
+                    </small>
+                  ) : null}
                   <input
                     type="text"
                     name="subject"
@@ -239,6 +216,11 @@ export const ContactUs = () => {
                   />
                 </div>
                 <div className="col-md-12">
+                  {getFieldError("message") ? (
+                    <small className="text-danger d-block mb-2">
+                      {getFieldError("message")}
+                    </small>
+                  ) : null}
                   <textarea
                     name="message"
                     className="form-control"
@@ -250,7 +232,9 @@ export const ContactUs = () => {
                   ></textarea>
                 </div>
                 <div className="col-md-12 text-center">
-                  <button type="submit">Send Message</button>
+                  <button type="submit" disabled={formData.loading}>
+                    {formData.loading ? "Sending..." : "Send Message"}
+                  </button>
                   <div className="sent-message" style={{ display: "none" }}>
                     Your message has been sent. Thank you!
                   </div>
