@@ -1,12 +1,10 @@
 import React, { useState, type FormEvent, type ChangeEvent } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { meta } from "../../content/site";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { meta, socialprofils } from "../../content/site";
+import { Container, Row, Col } from "react-bootstrap";
+import { FaLinkedin } from "react-icons/fa";
 import { contactConfig } from "../../content/contact";
-import {
-  submitContactForm,
-  type ContactApiError,
-} from "../../services/contact";
+import { submitContactForm, type ContactApiError } from "../../services/contact";
 
 type ContactFormState = {
   email: string;
@@ -64,8 +62,7 @@ export const ContactUs = () => {
           message: "",
           errors: [],
           loading: false,
-          alertmessage:
-            response.message || "SUCCESS! Thank you for your message",
+          alertmessage: response.message || "SUCCESS! Thank you for your message",
           variant: "success",
           show: true,
         }));
@@ -81,9 +78,7 @@ export const ContactUs = () => {
         errors: response.errors || [],
       }));
 
-      document
-        .querySelector(".co_alert")
-        ?.scrollIntoView({ behavior: "smooth" });
+      document.querySelector(".co_alert")?.scrollIntoView({ behavior: "smooth" });
     } catch (error: unknown) {
       const messageText =
         error instanceof Error
@@ -98,15 +93,11 @@ export const ContactUs = () => {
         show: true,
         errors: [],
       }));
-      document
-        .querySelector(".co_alert")
-        ?.scrollIntoView({ behavior: "smooth" });
+      document.querySelector(".co_alert")?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const fieldName = event.target.name;
     setFormdata((prev) => ({
       ...prev,
@@ -147,9 +138,7 @@ export const ContactUs = () => {
             <h3 className="color_sec py-4">Get in touch</h3>
             <address>
               <strong>Email:</strong>{" "}
-              <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>
-                {contactConfig.YOUR_EMAIL}
-              </a>
+              <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>{contactConfig.YOUR_EMAIL}</a>
               <br />
               <br />
               {"YOUR_FONE" in contactConfig ? (
@@ -169,9 +158,7 @@ export const ContactUs = () => {
               <div className="row gy-4">
                 <div className="col-md-6">
                   {getFieldError("name") ? (
-                    <small className="text-danger d-block mb-2">
-                      {getFieldError("name")}
-                    </small>
+                    <small className="text-danger d-block mb-2">{getFieldError("name")}</small>
                   ) : null}
                   <input
                     type="text"
@@ -185,9 +172,7 @@ export const ContactUs = () => {
                 </div>
                 <div className="col-md-6">
                   {getFieldError("email") ? (
-                    <small className="text-danger d-block mb-2">
-                      {getFieldError("email")}
-                    </small>
+                    <small className="text-danger d-block mb-2">{getFieldError("email")}</small>
                   ) : null}
                   <input
                     type="email"
@@ -201,9 +186,7 @@ export const ContactUs = () => {
                 </div>
                 <div className="col-md-12">
                   {getFieldError("subject") ? (
-                    <small className="text-danger d-block mb-2">
-                      {getFieldError("subject")}
-                    </small>
+                    <small className="text-danger d-block mb-2">{getFieldError("subject")}</small>
                   ) : null}
                   <input
                     type="text"
@@ -217,9 +200,7 @@ export const ContactUs = () => {
                 </div>
                 <div className="col-md-12">
                   {getFieldError("message") ? (
-                    <small className="text-danger d-block mb-2">
-                      {getFieldError("message")}
-                    </small>
+                    <small className="text-danger d-block mb-2">{getFieldError("message")}</small>
                   ) : null}
                   <textarea
                     name="message"
@@ -244,7 +225,6 @@ export const ContactUs = () => {
           </Col>
         </Row>
       </Container>
-      <span className={formData.loading ? "loading-bar" : "d-none"}></span>
     </HelmetProvider>
   );
 };

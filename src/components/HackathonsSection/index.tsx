@@ -6,7 +6,7 @@ import "../../pages/about/style.css";
 export const HackathonsSection = () => {
   return (
     <Container className="About-header">
-      <section className="hackathon-section sec_sp">
+      <section id="hackathon-projects" className="hackathon-section sec_sp">
         <div className="section-heading">
           <div className="section-heading">
             <p className="about-eyebrow">
@@ -14,9 +14,9 @@ export const HackathonsSection = () => {
             </p>
           </div>
           <p>
-            I love hackathons because they combine everything I enjoy: fast
-            problem solving, user-focused design, technical creativity and
-            pitching new ideas with talented people from different backgrounds.
+            I love hackathons because they combine everything I enjoy: fast problem solving,
+            user-focused design, technical creativity and pitching new ideas with talented people
+            from different backgrounds.
           </p>
         </div>
 

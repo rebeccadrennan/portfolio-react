@@ -63,7 +63,7 @@ const IsDevice: DeviceDetector | null = (() => {
 function useEventListener<K extends keyof DocumentEventMap>(
   eventName: K,
   handler: (event: DocumentEventMap[K]) => void,
-  element: Document | HTMLElement | null = typeof document !== "undefined" ? document : null,
+  element: Document | HTMLElement | null = typeof document !== "undefined" ? document : null
 ) {
   const savedHandler = useRef(handler);
 
@@ -102,7 +102,7 @@ function CursorCore({
     'input[type="number"]',
     'input[type="submit"]',
     'input[type="image"]',
-    'label[for]',
+    "label[for]",
     "select",
     "textarea",
     "button",
@@ -143,7 +143,7 @@ function CursorCore({
       previousTimeRef.current = time;
       requestRef.current = window.requestAnimationFrame(animateOuterCursor);
     },
-    [trailingSpeed],
+    [trailingSpeed]
   );
 
   useEffect(() => {
