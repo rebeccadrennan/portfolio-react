@@ -20,7 +20,7 @@ export const Home = () => {
 
   return (
     <HelmetProvider>
-      <section id="home" className="home">
+      <section id="home-introduction" className="home">
         <Helmet>
           <meta charSet="utf-8" />
           <title>{meta.title}</title>
@@ -28,11 +28,7 @@ export const Home = () => {
         </Helmet>
         <div className="intro_sec d-block d-lg-flex align-items-center reveal-section">
           <div className="order-1 order-lg-2 text-center mb-4 reveal-image">
-            <img
-              src={girlCodingBackground}
-              alt="Girl coding"
-              className="hero-illustration"
-            />
+            <img src={girlCodingBackground} alt="Girl coding" className="hero-illustration" />
           </div>
 
           <div className="text order-2 order-lg-1 h-100 d-lg-flex justify-content-center reveal-text">
@@ -65,7 +61,7 @@ export const Home = () => {
                 </h1>
                 <p className="mb-1x">{introdata.description}</p>
                 <div className="intro_btn-action pb-5">
-                  <a href="#contact">
+                  <a href="#contact-details">
                     <div id="button_h" className="ac_btn btn">
                       Contact Me
                       <span className="ring one"></span>
