@@ -17,8 +17,7 @@
   color: var(--text-color);
   background-color: var(--bg-color);
   border-color: var(--text-color);
-  box-shadow: 0 0 0 0.15rem
-    color-mix(in srgb, var(--text-color) 20%, transparent);
+  box-shadow: 0 0 0 0.15rem color-mix(in srgb, var(--text-color) 20%, transparent);
 }
 
 .contact__form .form-control:-webkit-autofill,
