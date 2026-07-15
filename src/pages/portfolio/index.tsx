@@ -6,6 +6,14 @@ import { portfolioItems } from "../../content/portfolio";
 import { meta } from "../../content/site";
 
 export const Portfolio = () => {
+  const toTitleCase = (value: string) =>
+    value
+      .toLowerCase()
+      .split(" ")
+      .filter(Boolean)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
   return (
     <HelmetProvider>
       <Container className="About-header">
@@ -26,6 +34,8 @@ export const Portfolio = () => {
 
           <div className="portfolio-grid mb-5">
             {portfolioItems.map((data) => {
+              const hostingTech = data.tech.filter((item) => item.startsWith("HOSTED ON "));
+              const coreTech = data.tech.filter((item) => !item.startsWith("HOSTED ON "));
               const hasExternalLink =
                 typeof data.liveUrl === "string" &&
                 data.liveUrl.length > 0 &&
@@ -64,10 +74,21 @@ export const Portfolio = () => {
                     <p>{data.summary}</p>
 
                     <div className="portfolio-tech-list">
-                      {data.tech.map((item) => (
+                      {coreTech.map((item) => (
                         <span key={item}>{item}</span>
                       ))}
                     </div>
+
+                    {hostingTech.length > 0 ? (
+                      <div className="portfolio-hosting-list" aria-label="Hosting platform">
+                        {hostingTech.map((item) => (
+                          <span key={item} className="portfolio-hosting-chip">
+                            <strong>Hosted on</strong>{" "}
+                            {toTitleCase(item.replace("HOSTED ON ", ""))}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
 
                     <div className="portfolio-actions">
                       {hasExternalLink ? (
