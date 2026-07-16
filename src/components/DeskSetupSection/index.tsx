@@ -86,8 +86,8 @@ export const DeskSetupSection = () => {
           <p className="about-eyebrow">My Desk</p>
           <h2>A setup that can move, multitask, and keep the music flowing.</h2>
           <p>
-            This is the gear stack that sits behind the projects, the late-night debugging, and
-            the occasional chat with Copilot or ChatGPT when I want a better angle on the problem.
+            This is the gear stack that sits behind the projects, the late-night debugging, and the
+            occasional chat with Copilot or ChatGPT when I want a better angle on the problem.
           </p>
         </div>
 
