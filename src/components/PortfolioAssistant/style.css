@@ -133,6 +133,118 @@
   padding: clamp(0.8rem, 1.8vw, 1.2rem);
 }
 
+.voiceControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.voiceButton,
+.voiceToggleButton,
+.voiceActionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: #f6f1ff;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0.48rem 0.8rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.voiceButton {
+  background: linear-gradient(150deg, rgba(71, 47, 141, 0.92), rgba(102, 73, 204, 0.9));
+  border-color: rgba(179, 165, 255, 0.42);
+}
+
+.voiceButton.isListening {
+  background: linear-gradient(150deg, rgba(176, 65, 124, 0.96), rgba(126, 42, 92, 0.96));
+  border-color: rgba(255, 165, 202, 0.55);
+}
+
+.voiceToggleButton {
+  background: rgba(28, 15, 66, 0.72);
+  border-color: rgba(145, 129, 255, 0.38);
+}
+
+.voiceToggleButton.isEnabled {
+  box-shadow: inset 0 0 0 1px rgba(129, 255, 206, 0.2);
+}
+
+.voiceToggleButton.isDisabled {
+  opacity: 0.85;
+}
+
+.voiceActionButton {
+  background: rgba(17, 9, 43, 0.7);
+  border-color: rgba(145, 129, 255, 0.34);
+}
+
+.voiceButton:hover:not(:disabled),
+.voiceToggleButton:hover:not(:disabled),
+.voiceActionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(192, 181, 255, 0.68);
+}
+
+.voiceButton:focus-visible,
+.voiceToggleButton:focus-visible,
+.voiceActionButton:focus-visible {
+  outline: 2px solid rgba(184, 173, 255, 0.95);
+  outline-offset: 2px;
+}
+
+.voiceButton:disabled,
+.voiceToggleButton:disabled,
+.voiceActionButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.voiceStatus {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.9rem;
+  padding: 0.72rem 0.82rem;
+  border-radius: 14px;
+  background: rgba(13, 7, 34, 0.45);
+  border: 1px solid rgba(145, 129, 255, 0.18);
+}
+
+.voiceStatusBadge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(122, 90, 255, 0.18);
+  color: #d5cbff;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.voiceStatusCopy {
+  color: #ece6ff;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.voiceStatusError {
+  color: #ffcad7;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
 .messagesViewport {
   max-height: 360px;
   overflow-y: auto;
@@ -320,6 +432,23 @@
   .chatPanel {
     padding: 0.76rem;
     border-radius: 16px;
+  }
+
+  .voiceControls {
+    gap: 0.35rem;
+  }
+
+  .voiceButton,
+  .voiceToggleButton,
+  .voiceActionButton {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .voiceStatus {
+    margin-top: 0.65rem;
+    margin-bottom: 0.8rem;
   }
 
   .messageBubble {

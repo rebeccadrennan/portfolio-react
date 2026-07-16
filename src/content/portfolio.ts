@@ -38,7 +38,17 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Portfolio AI Backend",
     summary:
       "Modular backend powering AI conversations, secure contact workflows, prompt orchestration and external service integrations. Designed with scalable APIs, configuration-driven architecture and production deployment in mind.",
-    tech: ["FastAPI", "Python", "AI", "Docker", "REST API", "GitHub Actions", "HOSTED ON RENDER"],
+    tech: [
+      "ElevenLabs",
+      "Gemini",
+      "FastAPI",
+      "Python",
+      "AI",
+      "Docker",
+      "REST API",
+      "GitHub Actions",
+      "HOSTED ON RENDER",
+    ],
     category: "Backend",
     visibility: "Public",
     imageUrl: swaggerUiGif,
