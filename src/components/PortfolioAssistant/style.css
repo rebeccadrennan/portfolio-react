@@ -15,13 +15,13 @@
 
 .aiAssistantSection {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: 100%;
   margin: clamp(2rem, 3vw, 3rem) 0;
 }
 
 .assistantFeatureCard {
-  width: min(1080px, 100%);
+  width: 100%;
   padding: clamp(1rem, 2.2vw, 2rem);
   border-radius: var(--assistant-radius);
   background: var(--assistant-bg);

@@ -3,6 +3,7 @@ import { Home } from "../pages/home";
 import { Portfolio } from "../pages/portfolio";
 import { Socialicons } from "../components/socialicons";
 import { HackathonsSection } from "../components/HackathonsSection";
+import { BeyondKeyboardSection } from "../components/BeyondKeyboardSection";
 
 const About = React.lazy(() =>
   import("../pages/about").then((module) => ({ default: module.About }))
@@ -33,6 +34,10 @@ function AppRoutes() {
 
         <section id="hackathon-highlights">
           <HackathonsSection />
+        </section>
+
+        <section id="beyond-keyboard-highlights">
+          <BeyondKeyboardSection />
         </section>
 
         <section id="contact-details">

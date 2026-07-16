@@ -276,9 +276,10 @@
 }
 
 .conference-timeline {
+  margin-top: 2rem;
   width: 100%;
   max-width: none;
-  margin: 0;
+
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 40px;
@@ -429,9 +430,49 @@
   font-size: 0.95rem;
 }
 
+.education-card-body {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.education-card-image {
+  flex-shrink: 0;
+  width: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.education-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.education-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
 .education-card-footer {
   margin-top: auto;
   padding-top: 18px;
+}
+
+@media (max-width: 600px) {
+  .education-card-body {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .education-card-image {
+    width: 130px;
+  }
 }
 
 .education-cta {
@@ -702,12 +743,13 @@
 }
 
 .section-heading .about-eyebrow {
-  font-size: 0.72rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--text-color-3);
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .section-heading h2 {
@@ -815,5 +857,120 @@
 @media (max-width: 480px) {
   .skill-pillar-card {
     padding: 24px;
+  }
+}
+
+.beyond-keyboard-section {
+  display: grid;
+}
+
+.beyond-keyboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.beyond-keyboard-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+  padding: 32px;
+  border-radius: 22px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(170deg, rgba(13, 24, 43, 0.74), rgba(17, 28, 48, 0.56)) padding-box,
+    linear-gradient(
+        135deg,
+        rgba(125, 211, 252, 0.5),
+        rgba(96, 165, 250, 0.2),
+        rgba(74, 222, 128, 0.48)
+      )
+      border-box;
+  background-size:
+    100% 100%,
+    170% 170%;
+  background-position:
+    center,
+    0% 50%;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-position 0.3s ease;
+  cursor: pointer;
+}
+
+.beyond-keyboard-card:hover,
+.beyond-keyboard-card:focus-within {
+  box-shadow:
+    0 30px 75px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(125, 211, 252, 0.35),
+    0 0 24px rgba(96, 165, 250, 0.3);
+  background-position:
+    center,
+    100% 55%;
+}
+
+.beyond-keyboard-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.beyond-keyboard-card p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: #d3dfef;
+}
+
+.beyond-emoji {
+  display: inline-flex;
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  margin-bottom: 1.15rem;
+  line-height: 1;
+  transform-origin: center;
+}
+
+.beyond-media {
+  width: 100%;
+  margin-bottom: 1.15rem;
+  transform-origin: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.beyond-card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+@media (max-width: 1100px) {
+  .beyond-keyboard-card:nth-child(4),
+  .beyond-keyboard-card:nth-child(5) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .beyond-keyboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .beyond-keyboard-card {
+    padding: 24px;
+    border-radius: 20px;
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beyond-keyboard-card {
+    transition: none;
   }
 }

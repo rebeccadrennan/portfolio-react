@@ -113,7 +113,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.65rem;
 }
 
 .portfolio-tech-list span {
@@ -122,6 +122,31 @@
   border-radius: 999px;
   font-size: 0.78rem;
   color: var(--text-color);
+}
+
+.portfolio-hosting-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-hosting-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.24rem 0.64rem;
+  border: 1px solid rgba(148, 212, 196, 0.5);
+  border-radius: 999px;
+  background: rgba(148, 212, 196, 0.16);
+  color: #c9fff0;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+
+.portfolio-hosting-chip strong {
+  color: #8af2d7;
+  font-weight: 700;
 }
 
 .portfolio-actions {
