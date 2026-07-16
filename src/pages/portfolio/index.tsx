@@ -83,8 +83,7 @@ export const Portfolio = () => {
                       <div className="portfolio-hosting-list" aria-label="Hosting platform">
                         {hostingTech.map((item) => (
                           <span key={item} className="portfolio-hosting-chip">
-                            <strong>Hosted on</strong>{" "}
-                            {toTitleCase(item.replace("HOSTED ON ", ""))}
+                            <strong>Hosted on</strong> {toTitleCase(item.replace("HOSTED ON ", ""))}
                           </span>
                         ))}
                       </div>

@@ -13,6 +13,8 @@ export type EducationHighlight = {
   year: string;
   institution: string;
   description: string;
+  image?: string;
+  imageAlt?: string;
   ctaLabel?: string;
   linkUrl?: string;
 };
@@ -91,6 +93,8 @@ export const educationHighlights: EducationHighlight[] = [
     institution: "Software Development with Digital Partnership",
     description:
       "Queen's University Belfast. Selected Specialisation: Video Analytics and Machine Learning. Dissertation: Developed Binder, an offline-first knowledge management platform enabling NGOs to deliver training materials in low-connectivity environments using a modular wiki-style architecture.",
+    image: "graduation",
+    imageAlt: "Graduation at Queen's University Belfast",
     ctaLabel: "View Dissertation",
     linkUrl: "https://drive.google.com/file/d/1DxFlixZ4t9lkeX-IR0aUalk2ANK3XwPe/view",
   },

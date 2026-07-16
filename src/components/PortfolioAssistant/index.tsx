@@ -97,100 +97,101 @@ export default function PortfolioAssistant() {
   };
 
   return (
-    <section id="assistant-chat" className="aiAssistantSection">
-      <div className="assistantFeatureCard">
-        <div className="assistantHeader">
-          <div className="assistantHeaderContent">
-            <span className="assistantBadge">✨ Built by Rebecca</span>
-            <h2>AI Portfolio Assistant</h2>
+    <div className="aiAssistantSection">
+      <div className="section-heading">
+        <p className="about-eyebrow">Portfolio Assistant</p>
+      </div>
+      <section id="assistant-chat">
+        <div className="assistantFeatureCard">
+          <div className="assistantHeader">
+            <a className="assistantCta" href="#featured-projects">
+              <span className="assistantCtaTitle">✨ Interested in how I built this?</span>
+              <span className="assistantCtaBody">
+                Explore the architecture, backend workflow, prompt design and deployment approach
+                behind this AI feature.
+              </span>
+              <span className="assistantCtaAction">View Project →</span>
+            </a>
           </div>
-          <a className="assistantCta" href="#featured-projects">
-            <span className="assistantCtaTitle">Interested in how I built this?</span>
-            <span className="assistantCtaBody">
-              Explore the architecture, backend workflow, prompt design and deployment approach
-              behind this AI feature.
-            </span>
-            <span className="assistantCtaAction">View Project →</span>
-          </a>
-        </div>
 
-        <div className="chatPanel">
-          <div className="messagesViewport" aria-live="polite" ref={messagesViewportRef}>
-            {messages.map((msg, index) => (
-              <article
-                key={`${msg.role}-${index}`}
-                className={`messageGroup ${msg.role === "user" ? "userGroup" : "assistantGroup"}`}
-              >
-                <p className="messageLabel">
-                  {msg.role === "user" ? "You" : "Rebecca’s Assistant"}
-                </p>
-                <div
-                  className={`messageBubble ${
-                    msg.role === "user" ? "userBubble" : "assistantBubble"
-                  }`}
+          <div className="chatPanel">
+            <div className="messagesViewport" aria-live="polite" ref={messagesViewportRef}>
+              {messages.map((msg, index) => (
+                <article
+                  key={`${msg.role}-${index}`}
+                  className={`messageGroup ${msg.role === "user" ? "userGroup" : "assistantGroup"}`}
                 >
-                  {msg.role === "assistant" ? (
+                  <p className="messageLabel">
+                    {msg.role === "user" ? "You" : "Rebecca’s Assistant"}
+                  </p>
+                  <div
+                    className={`messageBubble ${
+                      msg.role === "user" ? "userBubble" : "assistantBubble"
+                    }`}
+                  >
+                    {msg.role === "assistant" ? (
+                      <span className="assistantBubbleIcon" aria-hidden="true">
+                        ✦
+                      </span>
+                    ) : null}
+                    <p>{msg.text}</p>
+                  </div>
+                </article>
+              ))}
+
+              {loading ? (
+                <article className="messageGroup assistantGroup">
+                  <p className="messageLabel">Rebecca’s Assistant</p>
+                  <div className="messageBubble assistantBubble isThinking">
                     <span className="assistantBubbleIcon" aria-hidden="true">
                       ✦
                     </span>
-                  ) : null}
-                  <p>{msg.text}</p>
-                </div>
-              </article>
-            ))}
+                    <p>
+                      {hasPriorAssistantReply ? (
+                        <strong>Thinking...</strong>
+                      ) : (
+                        <>
+                          <strong>Thinking...</strong> Rebecca knows how to scale cloud
+                          infrastructure. She also knows how to avoid paying for it. First reply may
+                          take up to <strong>30 seconds</strong>. 😄
+                        </>
+                      )}
+                    </p>
+                  </div>
+                </article>
+              ) : null}
+            </div>
 
-            {loading ? (
-              <article className="messageGroup assistantGroup">
-                <p className="messageLabel">Rebecca’s Assistant</p>
-                <div className="messageBubble assistantBubble isThinking">
-                  <span className="assistantBubbleIcon" aria-hidden="true">
-                    ✦
-                  </span>
-                  <p>
-                    {hasPriorAssistantReply ? (
-                      <strong>Thinking...</strong>
-                    ) : (
-                      <>
-                        <strong>Thinking...</strong> Rebecca knows how to scale cloud
-                        infrastructure. She also knows how to avoid paying for it. First reply may
-                        take up to <strong>30 seconds</strong>. 😄
-                      </>
-                    )}
-                  </p>
-                </div>
-              </article>
-            ) : null}
-          </div>
+            <div className="suggestionChips" aria-label="Suggested questions">
+              {suggestedQuestions.map((question) => (
+                <button
+                  key={question}
+                  type="button"
+                  className="chipButton"
+                  onClick={() => void sendMessage(question)}
+                  disabled={loading}
+                >
+                  {question}
+                </button>
+              ))}
+            </div>
 
-          <div className="suggestionChips" aria-label="Suggested questions">
-            {suggestedQuestions.map((question) => (
-              <button
-                key={question}
-                type="button"
-                className="chipButton"
-                onClick={() => void sendMessage(question)}
+            <form className="inputBar" onSubmit={askAssistant}>
+              <textarea
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+                onKeyDown={handleInputKeyDown}
+                placeholder="Ask about Rebecca’s experience..."
+                rows={1}
                 disabled={loading}
-              >
-                {question}
+              />
+              <button type="submit" disabled={loading || !input.trim()}>
+                {loading ? "Thinking…" : "Ask AI"}
               </button>
-            ))}
+            </form>
           </div>
-
-          <form className="inputBar" onSubmit={askAssistant}>
-            <textarea
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              onKeyDown={handleInputKeyDown}
-              placeholder="Ask about Rebecca’s experience..."
-              rows={1}
-              disabled={loading}
-            />
-            <button type="submit" disabled={loading || !input.trim()}>
-              {loading ? "Thinking…" : "Ask AI"}
-            </button>
-          </form>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

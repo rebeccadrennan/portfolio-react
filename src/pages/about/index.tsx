@@ -9,6 +9,11 @@ import reframeImage from "../../assets/images/reframe.jpg";
 import TechmakersImage from "../../assets/images/Techmakers.jpg";
 import digitalDNAImage from "../../assets/images/digitalDNA.jpg";
 import womenInTechImage from "../../assets/images/womenInTech.jpg";
+import graduationImage from "../../assets/images/graduation.jpg";
+
+const educationImages: Record<string, string> = {
+  graduation: graduationImage,
+};
 
 type ConferenceCardProps = {
   title: string;
@@ -111,17 +116,31 @@ export const About = () => {
                     <span className="education-year">{item.year}</span>
                   </div>
 
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <div className="education-card-body">
+                    {item.image && educationImages[item.image] && (
+                      <div className="education-card-image">
+                        <img
+                          src={educationImages[item.image]}
+                          alt={item.imageAlt ?? ""}
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
 
-                  {hasLink && (
-                    <div className="education-card-footer">
-                      <span className="education-cta" aria-hidden="true">
-                        {item.ctaLabel}
-                        <span className="education-cta-arrow">→</span>
-                      </span>
+                    <div className="education-card-content">
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+
+                      {hasLink && (
+                        <div className="education-card-footer">
+                          <span className="education-cta" aria-hidden="true">
+                            {item.ctaLabel}
+                            <span className="education-cta-arrow">→</span>
+                          </span>
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </div>
                 </>
               );
 
